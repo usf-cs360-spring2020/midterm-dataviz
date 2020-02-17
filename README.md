@@ -1,6 +1,6 @@
 # README
 
-<https://usf-cs360-spring2020.github.io/template-bulma/>
+<https://usf-cs360-spring2020.github.io/midterm-dataviz/>
 
 ![Profile Image](profile.png)
 
