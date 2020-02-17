@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- TODO: Change title -->
-    <title>Website Template</title>
+   <!-- TODO: Change title -->
+    <title>Midterm Project</title>
 
     <!-- Load Bulma from CDN (consider saving it to repository instead) -->
     <!-- https://bulma.io/ -->
@@ -17,136 +17,192 @@
 
   <body>
 
-  <!-- Page header -->
-  <!-- https://bulma.io/documentation/layout/hero/ -->
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
+    <!-- Page header -->
+    <!-- https://bulma.io/documentation/layout/hero/ -->
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <!-- TODO: Change title -->
+          <h1 class="title">MidTerm Project</h1>
+          <!-- TODO: Change subtitle -->
+          <h2 class="subtitle">SF Fire Department Calls for Service DataSet Analysis</h2>
+        </div>
+      </div>
+    </section>
+    <!-- End page header -->
+
+    <!-- Page navigation -->
+    <!-- https://bulma.io/documentation/components/navbar/ -->
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="container">
-        <!-- TODO: Change title -->
-        <h1 class="title">Website Title</h1>
-        <!-- TODO: Change subtitle -->
-        <h2 class="subtitle">Website Subtitle</h2>
-      </div>
-    </div>
-  </section>
-  <!-- End page header -->
-
-  <!-- Page navigation -->
-  <!-- https://bulma.io/documentation/components/navbar/ -->
-  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="container">
-      <div class="navbar-brand">
-        <!-- TODO: Change link to repository homepage if needed -->
-        <!-- TODO: Change which navbar-item is-active if needed -->
-        <a class="navbar-item is-active" href="index.html">
-          <span class="icon"><i class="fas fa-home"></i></span>
-          <span>Home</span>
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="main-menu" class="navbar-menu has-text-weight-medium">
-        <!-- Left navbar items -->
-        <div class="navbar-start">
-          <a class="navbar-item" href="#data" title="Data">
-            <span class="icon"><i class="fas fa-table"></i></span>
-            <span>Data</span>
+        <div class="navbar-brand">
+          <!-- TODO: Change link to repository homepage if needed -->
+          <!-- TODO: Change which navbar-item is-active if needed -->
+          <a class="navbar-item is-active" href="index.html">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Home</span>
           </a>
 
-          <!-- TODO: Modify or remove dropdown -->
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Visualizations
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="main-menu" class="navbar-menu has-text-weight-medium">
+          <!-- Left navbar items -->
+          <div class="navbar-start">
+            <a class="navbar-item" href="#data" title="Data">
+              <span class="icon"><i class="fas fa-table"></i></span>
+              <span>Data</span>
             </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                <span class="icon"><i class="fas fa-chart-line"></i></span>
-                <span>Line Chart</span>
-              </a>
-              <a class="navbar-item">
-                <span class="icon"><i class="fas fa-chart-area"></i></span>
-                <span>Area Chart</span>
+            <!-- TODO: Modify or remove dropdown -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Visualizations
               </a>
 
-              <hr class="navbar-divider">
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  <span class="icon"><i class="fas fa-chart-line"></i></span>
+                  <span>Line Chart</span>
+                </a>
+                <a class="navbar-item">
+                  <span class="icon"><i class="fas fa-chart-area"></i></span>
+                  <span>Area Chart</span>
+                </a>
 
-              <a class="navbar-item">
-                <span class="icon"><i class="fas fa-chart-bar"></i></span>
-                <span>Bar Chart</span>
-              </a>
-              <a class="navbar-item">
-                <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                <span>Pie Chart</span>
-              </a>
+                <hr class="navbar-divider">
+
+                <a class="navbar-item">
+                  <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                  <span>Bar Chart</span>
+                </a>
+                <a class="navbar-item">
+                  <span class="icon"><i class="fas fa-chart-pie"></i></span>
+                  <span>Pie Chart</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Right navbar items -->
-        <div class="navbar-end">
-          <!-- TODO: Update as needed -->
-          <a class="navbar-item" href="#about" title="About">
-            <span class="icon"><i class="fas fa-tasks"></i></span>
-            <span>Grade</span>
-          </a>
+          <!-- Right navbar items -->
+          <div class="navbar-end">
+            <!-- TODO: Update as needed -->
+            <a class="navbar-item" href="#about" title="About">
+              <span class="icon"><i class="fas fa-tasks"></i></span>
+              <span>Grade</span>
+            </a>
 
-          <a class="navbar-item" href="#about" title="About">
-            <span class="icon"><i class="fas fa-info-circle"></i></span>
-            <span>About</span>
-          </a>
+            <a class="navbar-item" href="#about" title="About">
+              <span class="icon"><i class="fas fa-info-circle"></i></span>
+              <span>About</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-  <!-- End page navigation -->
+    </nav>
+    <!-- End page navigation -->
 
-  <section class="section">
-    <div class="container">
-      <!-- Begin page content -->
-      <div class="content">
-        <h1 class="title">
-          <!-- TODO: Change page title -->
-          Page Title
-        </h1>
-        <p class="subtitle">
-          <!-- TODO: Change page subtitle -->
-          Page Subtitle
-        </p>
-
-        <p>This would be an excellent place to describe what this page is for, what to find in different sections, describe any motivation or theme behind your visualizations, and so on.</p>
-
-        <p>You should not use this template unless you intend to customize it. Make it your own. Keep in mind this simple template is over 300 lines! You can see other examples of websites using Bulma at their showcase: <a href="https://bulma.io/expo/">bulma.io/expo/</a>.</p>
-
-        <h2 id="data">Data</h2>
-
-        <p>Include some detailed information about the dataset here. You should <a href="#">add a link</a> to the original dataset. You might also want to quote the license:</p>
-
-        <blockquote>
-          <p>
-            "This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: <a href="http://www.opendatacommons.org/licenses/pddl/1.0/">www.opendatacommons.org/licenses/pddl/1.0/</a>"
+    <section class="section">
+      <div class="container">
+        <!-- Begin page content -->
+        <div class="content">
+          <h1 class="title">
+            <!-- TODO: Change page title -->
+            Home
+          </h1>
+          <p class="subtitle">
+            <!-- TODO: Change page subtitle -->
+            Overall Objective
           </p>
-          <cite>Put a citation here, possibly link to the dataset license information directly.</cite>
-        </blockquote>
 
-        <p>In addition to including a link to the source and license, you should describe the data. You might want a list of some sort to enumerate the different types of columns:</p>
+          <p>This example visualizes the Fire Department Calls for Service dataset from DataSF(<a href="https://datasf.org/opendata/" target="_blank">https://datasf.org/opendata/</a>).</p>
 
-        <ol>
-          <li><strong>Column Name:</strong> Give a description of the column, including its type and possible range of values.</li>
+          <h2 id="data">Data</h2>
 
-          <li><strong>Column Name:</strong> Give a description of the column, including its type and possible range of values.</li>
+          <p>Fire Calls-For-Service includes all fire units responses to calls. Each record includes the call number, incident number, address, unit identifier, call type, and disposition. All relevant time intervals are also included. Because this dataset is based on responses, and since most calls involved multiple units, there are multiple records for each call number. Addresses are associated with a block number, intersection or call box, not a specific address.</p>
+          <p>The original dataset includes over 5.21M rows as of 16 February 2020. The original dataset includes 34 columns and each row is a response. The direct link to data set is: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data" taget="_blank">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data</a> . The full citation is :</p>
+          <blockquote>
+            <p>
+              "This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: <a href="http://www.opendatacommons.org/licenses/pddl/1.0/" target="_blank">www.opendatacommons.org/licenses/pddl/1.0/</a>"
+            </p>
+            <cite>Data acquired from <a href="https://datasf.org/opendata/" target="_blank">https://datasf.org/opendata/</a> on February 16 2020. Aggregated data on this page is made freely available under Open Data Commons Public Domain Dedication and License(<a href="https://opendatacommons.org/licenses/pddl/1.0/" target="_blank">https://opendatacommons.org/licenses/pddl/1.0/</a>).</cite>
+          </blockquote>
 
-          <li><strong>Column Name:</strong> Give a description of the column, including its type and possible range of values.</li>
+          <p>The dataset has following columns:</p>
 
-          <li><strong>Column Name:</strong> Give a description of the column, including its type and possible range of values.</li>
-        </ol>
+          <ol>
+            <li><strong>Call Number:</strong> A unique 9-digit number assigned by the 911 Dispatch Center (DEM) to this call. These number are used for both Police and Fire calls. The column is encoded as plain text.</li>
 
-        <p>This will of course differ depending on the assignment and data.</p>
+            <li><strong>Unit ID:</strong> Unit Identifier. For example E01 for Engine 1 or T01 for Truck 1. The column is encoded as plain text.</li>
+
+            <li><strong>Incident Number:</strong> A unique 8-digit number assigned by Dispatch Center (DEM) to this Fire incident. The column is encoded as plain text.</li>
+
+            <li><strong>Call Type:</strong> Type of call the incident falls into. The list is as follows: Medical Incident, Structure Fire, Alarms, Traffic Collision, Other, Citizen Assist / Service Call, Outside Fire, Administrative, Vehicle Fire, Water Rescue, Gas Leak (Natural and LP Gases), Odor (Strange / Unknown), Electrical Hazard, Elevator / Escalator Rescue, Smoke Investigation (Outside), Fuel Spill, Transfer, HazMat, Industrial Accidents, Explosion, Aircraft Emergency, Assist Police, Train / Rail Incident, High Angle Rescue, Watercraft in Distress, Extrication / Entrapped (Machinery, Vehicle), Oil Spill, Marine Fire, Mutual Aid / Assist Outside Agency, Confined Space / Structure Collapse, Suspicious Package, Train / Rail Fire, Lightning Strike (Investigation). The column is encoded as plain text.</li>
+
+            <li><strong>Call Date:</strong> Date the call is received at the 911 Dispatch Center. Used for reporting purposes. The column is encoded as Date and Time.</li>
+
+            <li><strong>Watch Date:</strong> Watch date when the call is received. Watch date starts at 0800 each morning and ends at 0800 the next day. The column is encoded as Date and Time.</li>
+
+            <li><strong>Received DtTm:</strong> Date and time of call is received at the 911 Dispatch Center. The column is encoded as Date and Time.</li>
+
+            <li><strong>Entry DtTm:</strong> Date and time the 911 operator submits the entry of the initical call information into the CAD system. The column is encoded as Date and Time.</li>
+
+            <li><strong>Dispatch DtTm:</strong> Date and time the 911 operator dispatches this unit to the call. The column is encoded as Date and Time.</li>
+
+            <li><strong>Response DtTm:</strong> Date and time this unit acknowledges the dispatch and records that the unit is en route to the location of the call. The column is encoded as Date and Time.</li>
+
+            <li><strong>On Scene DtTm:</strong> Date and time the unit records arriving to the location of the incident. The column is encoded as Date and Time.</li>
+
+            <li><strong>Transport DtTm:</strong> If this unit is an ambulance, date and time the unit begins the transport unit arrives to hospital. The column is encoded as Date and Time.</li>
+
+            <li><strong>Hospital DtTm:</strong> If this unit is an ambulance, date and time the unit arrives to the hospital. The column is encoded as Date and Time.</li>
+
+            <li><strong>Call Final Disposition:</strong> Disposition of the call (Code). For example TH2: Transport to Hospital - Code 2, FIR: Resolved by Fire Department. The column is encoded as plain text.</li>
+
+            <li><strong>Available DtTm:</strong> Date and time this unit is not longer assigned to this call and it is available for another dispatch. The column is encoded as Date and Time.</li>
+
+            <li><strong>Address:</strong>Address of midblock point associated with incident (obfuscated address to protect caller privacy). The column is encoded as plain text.</li>
+
+            <li><strong>City:</strong> City of incident. The column is encoded as plain text.</li>
+
+            <li><strong>Zipcode of Incident:</strong> Zipcode of Incident. The column is encoded as plain text.</li>
+
+            <li><strong>Battalion:</strong> Emergency Response District (There are 9 Fire Emergency Response Districts). The column is encoded as plain text.</li>
+
+            <li><strong>Station Area:</strong> Fire Station First Response Area associated with the address of the incident. The column is encoded as plain text.</li>
+
+            <li><strong>Box:</strong> Fire box associated with the address of the incident. A box is the smallest area used to divide the City. Each box is associated with a unique unit dispatch order. The City is divided into more than 2,400 boxes. The column is encoded as plain text.</li>
+
+            <li><strong>Original Priority:</strong> Initial call priority (Code 2: Non-Emergency or Code 3:Emergency). The column is encoded as plain text.</li>
+
+            <li><strong>Priority:</strong> Call priority (Code 2: Non-Emergency or Code 3:Emergency). The column is encoded as plain text.</li>
+
+            <li><strong>Final Priority:</strong> Final call priority (Code 2: Non-Emergency or Code 3:Emergency). The column is encoded as plain text.</li>
+
+            <li><strong>ALS Unit:</strong> Does this unit includes ALS (Advance Life Support) resources? Is there a paramedic in this unit? The column is encoded as check box.</li>
+
+            <li><strong>Call Type Group:</strong> Call types are divided into four main groups: Fire, Alarm, Potential Life Threatening and Non Life Threatening. The column is encoded as plain text.</li>
+
+            <li><strong>Number of Alarms:</strong> Number of alarms associated with the incident. This is a number between 1 and 5. The column is encoded as number.</li>
+
+            <li><strong>Unit Type:</strong> Unit type. The column is encoded as plain text.</li>
+
+            <li><strong>Unit sequence in call dispatch:</strong> A number that indicates the order this unit was assigned to this call. The column is encoded as number.</li>
+
+            <li><strong>Fire Prevention District:</strong> Bureau of Fire Prevention District associated with this address. The column is encoded as plain text.</li>
+
+            <li><strong>Supervisor District:</strong> Supervisor District associated with this address. The column is encoded as plain text.</li>
+
+            <li><strong>Neighborhooods - Analysis Boundaries:</strong> Neighborhood District associated with this address. The column is encoded as plain text.</li>
+
+            <li><strong>Location:</strong> Latitude and longitude of address obfuscated either to the midblock, intersection or call box. The column is encoded as location.</li>
+
+            <li><strong>RowID:</strong> Unique identifier used for managing data updates. It is the concatenation of Call Number and Unit ID separated by a dash. The column is encoded as plain text.</li>
+          </ol>
 
         <h3 id="wrangling">Wrangling</h3>
 
