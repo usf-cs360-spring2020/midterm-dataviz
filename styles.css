@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Dank Mono Regular';
+    src: url('font/DankMono-Regular.ttf');
+    
+    font-family: 'Dank Mono Italics';
+    src: url('font/DankMono-Italic.ttf');
+}
+
+div {
+    font-family: 'Dank Mono'
+}
+
+footer {
+    font-family: 'DankMono-Italic';
+}

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
 
    <!-- TODO: Change title -->
     <title>Midterm Project</title>
@@ -25,7 +26,7 @@
           <!-- TODO: Change title -->
           <h1 class="title">MidTerm Project</h1>
           <!-- TODO: Change subtitle -->
-          <h2 class="subtitle">SF Fire Department Calls for Service DataSet Analysis</h2>
+          <h2 class="subtitle" style="font-family: 'Dank Mono Italics';">SF Fire Department Calls for Service DataSet Analysis</h2>
         </div>
       </div>
     </section>
@@ -115,7 +116,7 @@
             Overall Objective
           </p>
 
-          <p>This example visualizes the Fire Department Calls for Service dataset from DataSF(<a href="https://datasf.org/opendata/" target="_blank">https://datasf.org/opendata/</a>). 
+          <p>This project visualizes the Fire Department Calls for Service dataset from DataSF(<a href="https://datasf.org/opendata/" target="_blank">https://datasf.org/opendata/</a>). 
             The goal of the visualization is to analyze the location of existing stations and to figure out if the stations are properly positioned within the San Francisco and at the same time
             to also figure out if there is a need to add new stations or remove existing stations in order to ensure better public safety.</p>
 
@@ -204,17 +205,13 @@
 
         <h3 id="wrangling">Wrangling</h3>
 
-        <p>Perhaps you had to do some data wrangling to the original dataset to prepare it for visualization. This would be a great place to discuss some of that wrangling.
+        <p>The data is filtered by Received DtTm as "greater than December 2018". The data is grouped by Neighborhooods - Analysis Boundaries, frequency of calls (incident number)</p>
 
         <pre>
-You can even put code into these pre blocks.
+  You can even put code into these pre blocks.
   It will preserve whitespace.
     That is helpful for formatted code.
         </pre>
-
-        <p>You can alternatively embed a Gist if you want. There is an "embed" button on <a href="https://gist.github.com/octocat/6cad326836d38bd3a7ae">the Gist page</a> and results in something like this:</p>
-
-        <script src="https://gist.github.com/octocat/6cad326836d38bd3a7ae.js"></script>
 
 
           <!-- TODO: 
@@ -228,7 +225,7 @@ You can even put code into these pre blocks.
   <!-- Page footer -->
   <!-- https://bulma.io/documentation/layout/footer/ -->
   <footer class="footer">
-    <div class="content has-text-centered is-size-7">
+    <div class="content has-text-centered is-size-7" >
       <p>
         <a href="#top">
           <span class="fas fa-arrow-up"></span>
