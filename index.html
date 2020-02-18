@@ -124,7 +124,7 @@
 
           <p>Fire Calls-For-Service includes all fire units responses to calls. Each record includes the call number, incident number, address, unit identifier, call type, and disposition. All relevant time intervals are also included. Because this dataset is based on responses, and since most calls involved multiple units, there are multiple records for each call number. Addresses are associated with a block number, intersection or call box, not a specific address.</p>
           <p>The original dataset includes over 5.21M rows as of 16 February 2020. The original dataset includes 34 columns and each row is a response. The direct link to data set is: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data" target="_blank">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data</a> . The full citation is :</p>
-          <blockquote>
+          <blockquote style="font-family: 'Dank Mono Italics';">
             <p>
               "This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: <a href="http://www.opendatacommons.org/licenses/pddl/1.0/" target="_blank">www.opendatacommons.org/licenses/pddl/1.0/</a>"
             </p>
@@ -205,12 +205,12 @@
 
         <h3 id="wrangling">Wrangling</h3>
 
-        <p>The data is filtered by Received DtTm as "greater than December 2018". The data is grouped by Neighborhooods - Analysis Boundaries, frequency of calls (incident number)</p>
+        <p>For reaching out to the conclusion, we will be considering data for year 2019.
+          The data is filtered by Received DtTm as "between January, 2019 and December, 2019".</p>
 
         <pre>
-  You can even put code into these pre blocks.
-  It will preserve whitespace.
-    That is helpful for formatted code.
+  Filtered by: Received DtTm      >=   January 1, 2019
+               and Received DtTm  <=   December 31, 2019
         </pre>
 
 
