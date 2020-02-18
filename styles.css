@@ -8,7 +8,12 @@
     src: url('font/DankMono-Italic.ttf');
 }
 
+@font-face {
+    font-family: 'Cascadia';
+    src: url('font/Cascadia.ttf')
+}
+
 div {
-    font-family: 'Dank Mono Regular';
+    font-family: 'Cascadia';
     font-size: 15px;
 }
