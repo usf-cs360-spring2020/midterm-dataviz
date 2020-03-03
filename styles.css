@@ -13,8 +13,20 @@
     src: url('font/Cascadia.ttf')
 }
 
+@font-face {
+    font-family: 'B612 Italics';
+    src: url('font/B612-Italic.ttf')
+}
+
+@font-face {
+    font-family: 'B612';
+    src: url('font/B612-Regular.ttf')
+}
+
 div {
-    font-family: 'Dank Mono Regular';
+    /* font-family: 'Dank Mono Regular'; */
+    font-family: 'B612';
     font-size: 14px;
     font-weight: 500;
+
 }
