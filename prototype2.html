@@ -73,7 +73,7 @@
               </a>
               <a class="navbar-item is-active" href="prototype2.html">
                 <span class="icon"><i class="fas fa-chart-area"></i></span>
-                <span>Prototype 2</span>
+                <span>Small Multiples Bubble Chart</span>
               </a>
 
 
@@ -110,7 +110,7 @@
         <div class="content">
             <h1 id="home" class="title">
                 <!-- TODO: Change page title -->
-                Prototype 2 - Number of Incidents across different Batallions and Stations
+                Prototype 2 - Average Number of Incidents across different Batallions and Stations
               </h1>
     
               <h5>Nikhil Bhutani</h5>
@@ -118,29 +118,50 @@
           <h4>Wrangling specific to prototype</h4>
           <pre style="font-size: 14px; font-family: Dank Mono Regular;">
     Filtered By: Batallion not "B99", Year 2019, Station Area not null and Call Type Group not null,
-    Grouping By: Batallion, Station Area, Call Type Group and Watch Date(Months)
-    Aggregated By: Incident Number(sum)
+    Grouping By: Batallion, Station Area, Call Type Group
+    Aggregated By: Average Incident Number(sum of count of incidents for each month for a battalion and station / no. of months per year(12))(rounded to 2 decimal places)
             </pre>
 
-          <h4>Tableau Prototype</h4>
+          <h4>Tableau Prototype(Beta Release)</h4>
           <img src="midterm_prototype_2.png" alt="prototype2" width="960" height="500">
+          
+          <h4> Tableau Prototype(Final Release)</h4>
+          <img src="midterm_prototype_2_final.png" alt="prototype2" width="960" height="500">
+          
+          <h4> D3 Implementation</h4>
+          <img src="midterm_prototype_2_final_d3.png" alt="prototype2" width="960" height="500">
 
-          <h4>Conclusion based on the prototype</h4>
-          <p>For year 2019, most active batallion is "B02" and station is "36" and most number of incidents are of type "Potentionally Life-Threatening"</p>
-
-          <h4>Planned Interactivity</h4>
-          <p>I have planned for following interactivities in future releases:</p>
+          <h4>Peer Review Feedback</h4>
           <ul>
-            <li>Highlighting all the circles related to a particular type if one of the circle of that type is hovered on i.e. 
-            Fade all of the non-hovered circles belonging to other types.</li>
-            <li>Providing a dropdown to filter data on different months.</li>
-            <li>on demand data display i.e. when a user hovers on a circle then a tool tip pops up with specific details of the data</li>
+            <li>The use of size to encode type of call is confusing. It seems to encode the number of calls, but is not. 
+              Also the use of a paired color scheme gives the impression that some battalions are related. Also it is hard to understand which neighborhood each station serves.</li>
+            <li>Having so many colors gets a bit overwhelming and makes it a bit difficult to properly see the data. The number of incidents also can be reliant on population for the neighborhood that battalion serves, so maybe a ratio would be better for lie factor rather than raw count. The labels included don't seem to add much to the visualization right now. 
+              Otherwise, this is a good visualization and can be improved with some tweaks and interactivity.</li>
+            <li>I think making Call Type displayed by circle size is a little confusing. Also Station numbers kind of lack information/content like location.</li>
+            <li>data density if very high, data-ink ratio high</li>
+            <li>A reccomendation I have for this one is to have the ability to filter by batallion so that we can see a less crowded version and make conclusions on the data separately.</li>
+            <li>differentiating call type group by size is difficult. There are a lot of overlapping bubbles near the bubble which might make it difficult to fond some data. the interactivity for it might solve that problem though.</li>
+            <li>there is a lot of colors and a lot of overlapping data. I think when working on interactivity remember this. Could be smart to use foreground vs background to show all data points with interactivity. For the labels under the values not totally sure if necessary because you have the legend already. Otherwise good job, look forward to seeing what the finish product comes out to.</li>
+           </ul>
+          
+          <h4> Data Encoding and Interpretation</h4>
+          <p>Battalion vs Station Numbers. Colour shows different call type groups. The size shows the incident number count. The x axis(vertical axis) is represented by station numbers and y axis(horizontal axis) is represented by batallions</p>
+          <p>The bigger circle size means that there are more number of incidents reported in that respective batallion and its corresponding station.</p>
+          
+          <h4>Conclusion based on the prototype</h4>
+          <p>For year 2019, most active batallion is "B02" and station is "36" with most number of incidents and the incidents are of type "Potentionally Life-Threatening"</p>
+
+          <h4>Interactivity for the Visualization</h4>
+          <p>Following interactivities has been implemented for the visualization:</p>
+          <ul>
+            <li>Highlighting all the circles related to a particular battalion accross different call type groups if one of the circle of a batallion is hovered on i.e. 
+            fading all of the circles belonging to other batallions.</li>
+            <li>On demand data display i.e. when a user hovers on a circle then a tool tip pops up with specific details of the data. The details includes batallion, station number
+            , station area, and call type group it belongs to</li>
           </ul>
 
           <h4>How this visualization supports the theme?</h4>
-          <p>Visualization helps in analysing the most active/busiest station and batallion and what type of incidents do they receive the most.</p>
-          
-
+          <p>Visualization helps in analysing the most active/busiest batallion and station and what type of incidents do they receive the most.</p>
 
         </div>
       <!-- End page content -->
