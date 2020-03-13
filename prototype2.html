@@ -119,7 +119,7 @@
           <pre style="font-size: 14px; font-family: Dank Mono Regular;">
     Filtered By: Batallion not "B99", Year 2019, Station Area not null and Call Type Group not null,
     Grouping By: Batallion, Station Area, Call Type Group
-    Aggregated By: Average Incident Number(sum of count of incidents for each month for a battalion and station / no. of months per year(12))(rounded to 2 decimal places)
+    Aggregated By: Average Incident Number(count of incidents for each month for a battalion and station / no. of months per year(12))(rounded to 2 decimal places)
             </pre>
 
           <h4>Tableau Prototype(Beta Release)</h4>
@@ -138,18 +138,18 @@
             <li>Having so many colors gets a bit overwhelming and makes it a bit difficult to properly see the data. The number of incidents also can be reliant on population for the neighborhood that battalion serves, so maybe a ratio would be better for lie factor rather than raw count. The labels included don't seem to add much to the visualization right now. 
               Otherwise, this is a good visualization and can be improved with some tweaks and interactivity.</li>
             <li>I think making Call Type displayed by circle size is a little confusing. Also Station numbers kind of lack information/content like location.</li>
-            <li>data density if very high, data-ink ratio high</li>
+            <li>data density if very high, data-ink ratio high.</li>
             <li>A reccomendation I have for this one is to have the ability to filter by batallion so that we can see a less crowded version and make conclusions on the data separately.</li>
             <li>differentiating call type group by size is difficult. There are a lot of overlapping bubbles near the bubble which might make it difficult to fond some data. the interactivity for it might solve that problem though.</li>
             <li>there is a lot of colors and a lot of overlapping data. I think when working on interactivity remember this. Could be smart to use foreground vs background to show all data points with interactivity. For the labels under the values not totally sure if necessary because you have the legend already. Otherwise good job, look forward to seeing what the finish product comes out to.</li>
            </ul>
           
           <h4> Data Encoding and Interpretation</h4>
-          <p>Battalion vs Station Numbers. Colour shows different call type groups. The size shows the incident number count. The x axis(vertical axis) is represented by station numbers and y axis(horizontal axis) is represented by batallions</p>
+          <p>Battalion vs Station Numbers. Colour shows different call type groups. The size shows the incident number count. The x axis(vertical axis) is represented by station numbers and y axis(horizontal axis) is represented by batallions.</p>
           <p>The bigger circle size means that there are more number of incidents reported in that respective batallion and its corresponding station.</p>
           
           <h4>Conclusion based on the prototype</h4>
-          <p>For year 2019, most active batallion is "B02" and station is "36" with most number of incidents and the incidents are of type "Potentionally Life-Threatening"</p>
+          <p>For year 2019, most active batallion is "B02" and station is "36" with most number of incidents and the incidents are of type "Potentionally Life-Threatening".</p>
 
           <h4>Interactivity for the Visualization</h4>
           <p>Following interactivities has been implemented for the visualization:</p>
@@ -157,7 +157,7 @@
             <li>Highlighting all the circles related to a particular battalion accross different call type groups if one of the circle of a batallion is hovered on i.e. 
             fading all of the circles belonging to other batallions.</li>
             <li>On demand data display i.e. when a user hovers on a circle then a tool tip pops up with specific details of the data. The details includes batallion, station number
-            , station area, and call type group it belongs to</li>
+            , station area, and call type group it belongs to.</li>
           </ul>
 
           <h4>How this visualization supports the theme?</h4>
