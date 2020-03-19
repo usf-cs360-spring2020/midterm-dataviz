@@ -55,7 +55,7 @@ function draw (data) {
                 return {
                   "battalion": subgroup.key,
                   "incident": subgroup.value,
-                  "months": dateFormatter(group.key)
+                  "month": dateFormatter(group.key)
                 }
               })
             }
@@ -249,7 +249,7 @@ function draw (data) {
         test.append("text")
             .attr("x", plot.width - 24)
             .attr("y", 25)
-            .attr("font-size", 12)
+            .attr("font-size", 1)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
             .text(function(d) {
