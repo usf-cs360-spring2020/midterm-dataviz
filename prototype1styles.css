@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Dank Mono Regular';
+  src: url('font/DankMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Dank Mono Italics';
+  src: url('font/DankMono-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Cascadia';
+  src: url('font/Cascadia.ttf')
+}
+
+@font-face {
+  font-family: 'B612 Italics';
+  src: url('font/B612-Italic.ttf')
+}
+
+@font-face {
+  font-family: 'B612';
+  src: url('font/B612-Regular.ttf')
+}
+
+div {
+  /* font-family: 'Dank Mono Regular'; */
+  font-family: 'B612';
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+/* .toolTip {
+    position: absolute;			
+    text-align: center;			
+    min-width: 80px;
+    height: auto;						
+    font: 16px sans-serif;
+    color: black;
+    background-color: aliceblue;
+    border: 1px solid #6F257F;
+    padding: 14px;		
+    border-radius: 8px;			
+    pointer-events: none;
+  } */
+
+  .toolTip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background: #ddd;
+    pointer-events: none;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  }
+
+  #legend {
+      position: absolute;
+      width: 300px;
+      height: 400px;
+  }
+
+  .tick line{
+    opacity: 0.2;
+  }
