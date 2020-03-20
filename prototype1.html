@@ -68,11 +68,11 @@
 
             <div class="navbar-dropdown">
 
-              <a class="navbar-item" href="prototype1.html">
+              <a class="navbar-item is-active" href="prototype1.html">
                 <span class="icon"><i class="fas fa-chart-bar"></i></span>
                 <span>Interactive Bar Chart</span>
               </a>
-              <a class="navbar-item is-active" href="prototype2.html">
+              <a class="navbar-item" href="prototype2.html">
                 <span class="icon"><i class="fas fa-chart-area"></i></span>
                 <span>Small Multiples Bubble Chart</span>
               </a>
@@ -112,9 +112,41 @@
             <h1 id="home" class="title">
                 <!-- TODO: Change page title -->
                 Prototype 1 - Number of Incidents reported in Each Batallion for the Year 2019
-              </h1>
+            </h1>
     
-              <h5>Aryan Dilip Choudhary</h5>
+            <h5>Aryan Dilip Choudhary</h5>
+
+            <section class="section">
+              <h4>D3 version</h4>
+              
+              <div class="container content">
+
+                <p style="font-size: 18px;">Number of Incidents reported in each Battalion for the Year 2019</p>
+          
+                <svg id="D3Prototype1"></svg>
+                <svg id ="legend"></svg>
+
+                <p class="is-size-7 has-text-grey">
+                  Source: <a href="https://opportunityinsights.org/paper/mobilityreportcards/" target="_blank">https://opportunityinsights.org/paper/mobilityreportcards/</a>
+
+                  <br>
+
+                  Created by - Aryan Choudhary
+                </p>
+          
+              </div>
+            </section>
+
+            <h4> Tableau Prototype</h4>
+            <img src="midterm_prototype_1.png" alt="prototype1" width="960" height="500">
+
+          <script src="https://d3js.org/d3.v5.min.js"></script>
+
+          <!-- include d3-legend: https://d3-legend.susielu.com/ -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha256-qo76Vs9B6JAALbrTn+PcN1r09hbNLd2M78V19glOMeU=" crossorigin="anonymous"></script>
+
+         <script src="javascript/prototype1.js"></script>
+
 
           <h4>Wrangling specific to prototype</h4>
           <p>For this tableau prototype the data is filtered by "Batallion" not "B99", "Year" is 2019. The data is grouped by Batallion, Watch Date (Months). The data is aggregated by Incident Number as sum.</p>
@@ -124,37 +156,6 @@
     Grouping By: Batallion, Watch Date (Months), and Call Type Group (Interactivity)
     Aggregated By: Incident Number (sum)
             </pre>
-
-          <h4> Tableau Prototype</h4>
-          <img src="midterm_prototype_1.png" alt="prototype1" width="960" height="500">
-
-          <section class="section">
-            <h4>D3 version</h4>
-            
-            <div class="container content">
-
-              <p style="font-size: 18px;">Number of Incidents reported in each Battalion for the Year 2019</p>
-        
-              <svg id="D3Prototype1"></svg>
-              <svg id ="legend"></svg>
-
-              <p class="is-size-7 has-text-grey">
-                Source: <a href="https://opportunityinsights.org/paper/mobilityreportcards/" target="_blank">https://opportunityinsights.org/paper/mobilityreportcards/</a>
-
-                <br>
-
-                Created by - Aryan Choudhary
-              </p>
-        
-            </div>
-          </section>
-
-          <script src="https://d3js.org/d3.v5.min.js"></script>
-
-          <!-- include d3-legend: https://d3-legend.susielu.com/ -->
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha256-qo76Vs9B6JAALbrTn+PcN1r09hbNLd2M78V19glOMeU=" crossorigin="anonymous"></script>
-
-         <script src="javascript/prototype1.js"></script>
 
           <h4>Conclusion based on the prototype</h4>
           <p>For year 2019, "B02" is the most active Batallion. December 2019 is the month with the highest number of incidents for the Batallion "B02". The second most active Batallion is "B03". The prototype shows an increase in number of incidents from January to December except for the month of July and November.</p>

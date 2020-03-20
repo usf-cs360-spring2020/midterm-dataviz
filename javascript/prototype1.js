@@ -205,8 +205,8 @@ function draw (data) {
                     .enter()
                     .append("tr");
 
-                console.log("Object.keys(d):",Object.keys(d))
-                console.log("incident: ", d.incident)
+                // console.log("Object.keys(d):",Object.keys(d))
+                // console.log("incident: ", d.incident)
 
                 rows.append("th").text(key => key);
                 rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
@@ -246,7 +246,11 @@ function draw (data) {
             .style("fill", function(d) {
                 return color(d);
             })
-            .style("opacity", 1);
+            .style("opacity", 1)
+            .on("click",function(d) { 
+                console.log("clicked");
+                update(d); 
+            });
 
         test.append("text")
             .attr("x", plot.width - 24)
@@ -269,6 +273,124 @@ function draw (data) {
             .style("opacity", "1")
             .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1")
             .text("Battalion")
+
+
+        var filtered = [];
+
+        function update(d) {
+            if (filtered.indexOf(d) == -1) {
+                filtered.push(d);
+
+                if (filtered.length == categories.length) {
+                    filtered = [];
+                }
+            } else {
+                filtered.splice(filtered.indexOf(d), 1);
+            }
+
+            var newKeys = [];
+            categories.forEach(function(d) {
+                if (filtered.indexOf(d) == -1) {
+                    newKeys.push(d);
+                }
+            });
+
+            // console.log("newKeys",newKeys)
+
+            x1.domain(newKeys).rangeRound([0, x0.bandwidth()]);
+            // console.log(data[0].values)
+
+            console.log("TempMax", d3.max(data, function(e) { 
+                return d3.max(e.values, function(d) {
+                    return d3.max(categories, function(key) {
+                        if (filtered.indexOf(key) == -1) {
+                            // console.log("key", key)
+                            return d.incident;
+                        }
+                    })
+                })}));
+            
+            y.domain([0, d3.max(data, function(e) { 
+                return d3.max(e.values, function(d) {
+                    return d3.max(categories, function(key) {
+                        if (filtered.indexOf(key) == -1) {
+                            // console.log("key", key)
+                            if (d.key != key) {
+                                return d.incident;
+                            }
+                        }
+                    })
+                })})
+            ])
+                .nice();
+
+                // y.domain([0, d3.max(data, function(d) {
+                //      return d3.max(keys, function(key) { 
+                //          if (filtered.indexOf(key) == -1) 
+                //          return d[key]; 
+                //         }); 
+                //     })])
+                //     .nice();
+
+                console.log("ActualMax", d3.max(data, function(c) {
+                    return d3.max(c.values, function(d) {
+                        return d.incident;
+                    });
+                }))
+
+            svg.select(".y")
+                .transition()
+                .call(d3.axisLeft(y).ticks(null, "s"))
+                .duration(500);
+
+            var bars = svg.selectAll(".bar").selectAll("rect")
+                .data(function(d) { return categories.map(function(key) { return {
+                    key: key, 
+                    value: d[key]}; 
+                }); 
+            })
+
+            bars.filter(function(d) {
+                return filtered.indexOf(d.key) > -1;
+             })
+                .transition()
+                .attr("x", function(d) {
+                return (+d3.select(this).attr("x")) + (+d3.select(this).attr("width"))/2;  
+                })
+                .attr("height",0)
+                .attr("width",0)     
+                .attr("y", function(d) { return height; })
+                .duration(500);
+
+            bars.filter(function(d) {
+                    return filtered.indexOf(d.key) == -1;
+                  })
+                  .transition()
+                  .attr("x", function(d) { return x1(d.key); })
+                  .attr("y", function(d) { return y(d.value); })
+                  .attr("height", function(d) { return height - y(d.value); })
+                  .attr("width", x1.bandwidth())
+                  .attr("fill", function(d) { return z(d.key); })
+                  .duration(500);
+              
+            legend.selectAll("rect")
+                  .transition()
+                  .attr("fill",function(d) {
+                    if (filtered.length) {
+                      if (filtered.indexOf(d) == -1) {
+                        return z(d); 
+                      }
+                       else {
+                        return "white"; 
+                      }
+                    }
+                    else {
+                     return z(d); 
+                    }
+                  })
+                  .duration(100);
+        }
+
 };
 
 let parseColumnName = d3.timeParse('%mm%dd%yyyy');
