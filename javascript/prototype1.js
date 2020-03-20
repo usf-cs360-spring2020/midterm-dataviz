@@ -188,14 +188,16 @@ function draw (data) {
                 d3.selectAll("#D3Prototype1 rect")
                     .filter(e => (d.battalion !== e.battalion))
                     .transition()
+                    .duration(1000)
                     .style("fill-opacity", "0.2");        
                     
                 tooltip.transition()		
                     .duration(1000)		
                     .style("opacity", .8)
+                    .style("border-color", color(d.battalion))
                 tooltip
-                    .style("left", (d3.event.pageX - 90) + "px")
-                    .style("top", (d3.event.pageY - 90) + "px")
+                    .style("left", (d3.event.pageX - 70) + "px")
+                    .style("top", (d3.event.pageY - 110) + "px")
                     .style("display", "inline-block")
                 
                 let rows = tooltip.append("table")
@@ -205,12 +207,20 @@ function draw (data) {
                     .enter()
                     .append("tr");
 
-                // console.log("Object.keys(d):",Object.keys(d))
-                // console.log("incident: ", d.incident)
-
                 rows.append("th").text(key => key);
                 rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
 
+            })
+            .on("mousemove", function (d) {  
+            tooltip.transition()		
+                .duration(500)		
+                .style("opacity", .8)
+                .style("border-color", color(d.battalion))
+            tooltip
+                .style("left", (d3.event.pageX - 70) + "px")
+                .style("top", (d3.event.pageY - 110) + "px")
+                .style("display", "inline-block")
+            
             })
             .on("mouseout", function(d, i){
                 tooltip
@@ -220,7 +230,7 @@ function draw (data) {
 
                 d3.selectAll("table").remove();
                     
-                d3.selectAll("#D3Prototype1 rect").transition()
+                d3.selectAll("#D3Prototype1 rect").transition().duration(1000)
                     .style("fill-opacity", "1");
             });
 

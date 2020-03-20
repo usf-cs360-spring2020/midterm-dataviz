@@ -36,9 +36,9 @@ div {
     width: auto;
     height: auto;
     padding: 8px;
-    background: #ddd;
+    background: whitesmoke;
     pointer-events: none;
-    border: 1px solid #eee;
+    border: 3px solid;
     border-radius: 10px;
   }
 
