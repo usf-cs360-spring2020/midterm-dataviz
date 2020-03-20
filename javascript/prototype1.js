@@ -133,8 +133,7 @@ function draw (data) {
         let xGroup = plots.append("g")
             .attr("id", "x-axis")
             .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
-        xGroup.call(xAxis
-            .tickSize(-plot.width, 0, 0));
+        xGroup.call(xAxis.tickSize(-plot.height, 200, 0));
         xGroup.attr("transform", "translate(0," + plot.height + ")");
 
         let yGroup = plots.append("g")
@@ -148,8 +147,7 @@ function draw (data) {
             .text("No. of Incidents")
             .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
 
-        yGroup.call(yAxis
-            .tickSize(-plot.width, 0, 0));
+        yGroup.call(yAxis.tickSize(-plot.width, 200, 0));
 
         let color = d3.scaleOrdinal(d3.schemeTableau10);
 
