@@ -55,7 +55,8 @@ function draw (data) {
                 return {
                   "battalion": subgroup.key,
                   "incident": subgroup.value,
-                  "month, year": dateFormatter(group.key)
+                  "month": dateFormatter(group.key),
+                  "year": "2019"
                 }
               })
             }
@@ -309,18 +310,18 @@ function split (string){
 
 function dateFormatter (d){
     let month = new Array();
-    month[0] = "January, 2019";
-    month[1] = "February, 2019";
-    month[2] = "March, 2019";
-    month[3] = "April, 2019";
-    month[4] = "May, 2019";
-    month[5] = "June, 2019";
-    month[6] = "July, 2019";
-    month[7] = "August, 2019";
-    month[8] = "September, 2019";
-    month[9] = "October, 2019";
-    month[10] = "November, 2019";
-    month[11] = "December, 2019";
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
     
     return month[d-1];
 }
