@@ -11,6 +11,9 @@
     <!-- Load Bulma from CDN (consider saving it to repository instead) -->
     <!-- https://bulma.io/ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    
+    <!-- TODO: include stylesheets -->
+    <link href="bubbleplot/style.css" rel="stylesheet" type="text/css">
 
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -117,7 +120,7 @@
 
           <h4>Wrangling specific to prototype</h4>
           <pre style="font-size: 14px; font-family: Dank Mono Regular;">
-    Filtered By: Batallion not "B99", Year 2019, Station Area not null and Call Type Group not null,
+    Filtered By: Batallion not "B99", Year 2019, Station Area not null, Call Type Group not null and City is "San Francisco"
     Grouping By: Batallion, Station Area, Call Type Group
     Aggregated By: Average Incident Number(count of incidents for each month for a battalion and station / no. of months per year(12))(rounded to 2 decimal places)
             </pre>
@@ -129,7 +132,37 @@
           <img src="midterm_prototype_2_final.png" alt="prototype2" width="960" height="500">
           
           <h4> D3 Implementation</h4>
-          <img src="midterm_prototype_2_final_d3.png" alt="prototype2" width="960" height="500">
+          <section id="d3ImplementationSection" class="section">
+              <div class="container content">
+                <h2 style="font-weight: normal">Average number of incidents across different batallions and stations for Year 2019 and San Francisco city</h2>
+                <!-- TODO: include html elements -->
+                <svg id="main-svg"></svg>
+                <svg id="legend-svg" style="position: absolute;"></svg>
+
+                <p>Nikhil Bhutani</p>
+                <p>Source:
+                  <ul>
+                    <li>
+                      <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data" target="_blank">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data</a>
+                    </li>
+                    <li>
+                      <a href="https://sf-fire.org/fire-station-locations" target="_blank">https://sf-fire.org/fire-station-locations</a>
+                    </li>
+                  </ul>
+                </p>
+              </div>
+        </section>
+
+        <!-- include d3.js v5 -->
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+
+        <!-- include d3.js modules -->
+        <script src="https://d3js.org/d3-array.v2.min.js"></script>
+
+        <!-- include d3-legend: https://d3-legend.susielu.com/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha256-qo76Vs9B6JAALbrTn+PcN1r09hbNLd2M78V19glOMeU=" crossorigin="anonymous"></script>
+
+        <script src="bubbleplot/bubble.js"></script>
 
           <h4>Peer Review Feedback</h4>
           <ul>
@@ -165,8 +198,8 @@
           
           <h4>Inspiration</h4>
           <ul>
-            <li>https://gist.github.com/sjengle/22051097a8090fa227cbd80cdc2bad03(Mobility Rate by College Bubble Chart By Sophie Engle)</li>
-            <li>https://observablehq.com/@sjengle/interactivity?collection=@sjengle/interactive-scatterplot(Interactive Scatter Plot By Sophie Engle)</li>
+            <li><a href="https://gist.github.com/sjengle/22051097a8090fa227cbd80cdc2bad03" target="_blank">Mobility Rate by College Bubble Chart By Sophie Engle</a></li>
+            <li><a href="https://observablehq.com/@sjengle/interactivity?collection=@sjengle/interactive-scatterplot" target="_blank">Interactive Scatter Plot By Sophie Engle</a></li>
           </ul>
 
         </div>
