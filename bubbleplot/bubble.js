@@ -21,7 +21,7 @@ var svg = d3.select("body").select("#main-svg")
   .attr("width", svg_width)
   .attr("height", svg_height);
 
-var div = d3.select("body .section .container").append("div")
+var div = d3.select("body #d3ImplementationSection .container").append("div")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
