@@ -11,6 +11,9 @@
     <!-- Load Bulma from CDN (consider saving it to repository instead) -->
     <!-- https://bulma.io/ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    
+    <!-- TODO: include stylesheets -->
+    <link href="bubbleplot/style.css" rel="stylesheet" type="text/css">
 
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -129,7 +132,37 @@
           <img src="midterm_prototype_2_final.png" alt="prototype2" width="960" height="500">
           
           <h4> D3 Implementation</h4>
-          <img src="midterm_prototype_2_final_d3.png" alt="prototype2" width="960" height="500">
+          <section class="section">
+              <div class="container content">
+                <h2 style="font-weight: normal">Average number of incidents across different batallions and stations for Year 2019 and San Francisco city</h2>
+                <!-- TODO: include html elements -->
+                <svg id="main-svg"></svg>
+                <svg id="legend-svg" style="position: absolute;"></svg>
+
+                <p>Nikhil Bhutani</p>
+                <p>Source:
+                  <ul>
+                    <li>
+                      <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data" target="_blank">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data
+                    </li>
+                    <li>
+                      <a href="https://sf-fire.org/fire-station-locations" target="_blank">https://sf-fire.org/fire-station-locations
+                    </li>
+                  </ul>
+                </p>
+              </div>
+        </section>
+
+        <!-- include d3.js v5 -->
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+
+        <!-- include d3.js modules -->
+        <script src="https://d3js.org/d3-array.v2.min.js"></script>
+
+        <!-- include d3-legend: https://d3-legend.susielu.com/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha256-qo76Vs9B6JAALbrTn+PcN1r09hbNLd2M78V19glOMeU=" crossorigin="anonymous"></script>
+
+        <script src="bubbleplot/bubble.js"></script>
 
           <h4>Peer Review Feedback</h4>
           <ul>
