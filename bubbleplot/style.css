@@ -8,3 +8,7 @@ div.tooltip{
      pointer-events: none;
      width: 200px;
    }
+
+.label{
+  font-weight: normal;
+}
