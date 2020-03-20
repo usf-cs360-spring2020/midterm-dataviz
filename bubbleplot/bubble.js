@@ -155,7 +155,7 @@ function draw_bubbleplot(data, x_start, y_start, allBatallions, allStations, all
     .call(yAxis)
     .append('text')
     .attr('x', 8)
-    .attr('y', 0)
+    .attr('y', 20)
     .attr('text-anchor', 'end')
     .attr('class', 'label')
     .style('fill', 'black')
