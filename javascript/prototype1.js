@@ -55,7 +55,7 @@ function draw (data) {
                 return {
                   "battalion": subgroup.key,
                   "incident": subgroup.value,
-                  "month": dateFormatter(group.key)
+                  "month, year": dateFormatter(group.key)
                 }
               })
             }
@@ -130,7 +130,8 @@ function draw (data) {
         yAxis.tickFormat(numFormatter);
 
         let xGroup = plots.append("g")
-            .attr("id", "x-axis");
+            .attr("id", "x-axis")
+            .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
         xGroup.call(xAxis
             .tickSize(-plot.width, 0, 0));
         xGroup.attr("transform", "translate(0," + plot.height + ")");
@@ -143,7 +144,8 @@ function draw (data) {
             .attr("fill", "#000")
             .attr("font-weight", "bold")
             .attr("text-anchor", "start")
-            .text("No. of Incidents");
+            .text("No. of Incidents")
+            .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
 
         yGroup.call(yAxis
             .tickSize(-plot.width, 0, 0));
@@ -164,6 +166,7 @@ function draw (data) {
             .data(function(d) {
                 return d.values;
             });
+            
         bars.enter().append("rect")
             .attr("class", "bar")
             .attr("width", x1.bandwidth())
@@ -183,6 +186,11 @@ function draw (data) {
             })
             .on("mouseover", function(d) {
 
+                d3.selectAll("#D3Prototype1 rect")
+                    .filter(e => (d.battalion !== e.battalion))
+                    .transition()
+                    .style("fill-opacity", "0.2");        
+                    
                 tooltip.transition()		
                     .duration(1000)		
                     .style("opacity", .8)
@@ -190,11 +198,6 @@ function draw (data) {
                     .style("left", (d3.event.pageX - 90) + "px")
                     .style("top", (d3.event.pageY - 90) + "px")
                     .style("display", "inline-block")
-
-                d3.selectAll("#D3Prototype1 rect")
-                    .filter(e => (d.battalion !== e.battalion))
-                    .transition()
-                    .style("fill-opacity", "0.2");                
                 
                 let rows = tooltip.append("table")
                     .attr("id", "tableToolTip")
@@ -207,7 +210,7 @@ function draw (data) {
                 console.log("incident: ", d.incident)
 
                 rows.append("th").text(key => key);
-                rows.append("td").text(key => d[key]);
+                rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
 
             })
             .on("mouseout", function(d, i){
@@ -231,14 +234,14 @@ function draw (data) {
             }))
             .enter().append("g")
             .attr("class", "legend")
-            .style("opacity", "1")
+            .style("opacity", "0")
             .attr("transform", function(d, i) {
                 return "translate(-800," + i*25 + ")";
             });
 
         test.append("rect")
             .attr("x", plot.width - 18)
-            .attr("y", 20)
+            .attr("y", 24)
             .attr("width", 10)
             .attr("height", 10)
             .style("fill", function(d) {
@@ -248,8 +251,8 @@ function draw (data) {
 
         test.append("text")
             .attr("x", plot.width - 24)
-            .attr("y", 25)
-            .attr("font-size", 1)
+            .attr("y", 30)
+            .attr("font-size", 12)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
             .text(function(d) {
@@ -262,7 +265,7 @@ function draw (data) {
             .attr("class", "label")
             .attr("font-size", 6)
             .attr("x", 30)
-            .attr("y", "8")
+            .attr("y", "7")
             .attr("dy", ".35em")
             .style("opacity", "1")
             .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1")
@@ -306,18 +309,18 @@ function split (string){
 
 function dateFormatter (d){
     let month = new Array();
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
+    month[0] = "January, 2019";
+    month[1] = "February, 2019";
+    month[2] = "March, 2019";
+    month[3] = "April, 2019";
+    month[4] = "May, 2019";
+    month[5] = "June, 2019";
+    month[6] = "July, 2019";
+    month[7] = "August, 2019";
+    month[8] = "September, 2019";
+    month[9] = "October, 2019";
+    month[10] = "November, 2019";
+    month[11] = "December, 2019";
     
     return month[d-1];
 }
