@@ -218,7 +218,7 @@ function draw_bubbleplot(data, x_start, y_start, allBatallions, allStations, all
 
 function showLabel(d, callType) {
   var coords = [d3.event.clientX, d3.event.clientY];
-  console.lod(d);
+  console.log(d);
   console.log("clientX" + d3.event.clientX);
   console.log("clientY" + d3.event.clientY);
   var top = coords[1] + 15,
