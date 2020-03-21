@@ -287,6 +287,7 @@ function redraw() {
         .call(d3.axisBottom(x))
         .selectAll("text")
         .style("font-size", 13)
+        .style("cursor", "hand")
         .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
         .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
         .on("click", function (x) {
@@ -300,6 +301,7 @@ function redraw() {
         .call(d3.axisLeft(y))
         .selectAll("text")
         .style("font-size", 13)
+        .style("cursor", "hand")
         .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
         .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
         .on("click", function (x) {
@@ -314,6 +316,7 @@ function redraw() {
         .call(d3.axisBottom(x2))
         .selectAll("text")
         .style("font-size", 13)
+        .style("cursor", "hand")
         .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
         .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
         .on("click", function (x) {
