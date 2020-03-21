@@ -230,6 +230,9 @@ function draw_bubbleplot(data, x_start, y_start, allBatallions, allStations, all
       hideLabel();
       //fadeOut();
     })
+    .on("click", function(d) {
+      filterByBattalionAndStation(d);
+    });
 
 }
 
@@ -439,6 +442,20 @@ function filterCallTypeGroup(c) {
   d3.selectAll("#main-svg circle")
     .filter(function(d) {
       return d[3] != c;
+    }).classed('hidden', function() { // toggle "hidden" class
+      return !d3.select(this).classed('hidden');
+    });
+}
+
+function filterByBattalionAndStation(c) {
+  d3.selectAll("#main-svg circle")
+    .classed('hidden', function() { // toggle "hidden" class
+      return !d3.select(this).classed('hidden');
+    });
+
+  d3.selectAll("#main-svg circle")
+    .filter(function(d) {
+      return d[0] == c[0] && d[1] == c[1];
     }).classed('hidden', function() { // toggle "hidden" class
       return !d3.select(this).classed('hidden');
     });
