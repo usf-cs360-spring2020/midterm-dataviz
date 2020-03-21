@@ -258,15 +258,7 @@
 
             
           </p>
-
-          <h4>D3 Implementation</h4>
-
-          <!-- Load d3.js -->
-          <script src="https://d3js.org/d3.v5.js"></script>
-          <div id="prototype3"></div>
-          <script src="javascript/prototype3.js"></script>
-
-        <h4>Data encoding</h4>
+          <h4>Data encoding</h4>
           <p>
             Average of Time to Arrival is broken down by Watch Date Month vs.
              Neighborhoods - Analysis Boundaries.  Color shows average of Time to Arrival. 
@@ -286,11 +278,36 @@
           </p>  
           <p>
             Clicking a cell in the heat map applies that filter to the bar chart. Click again to reset to all data points.
+            <li>For example, When You clike a cell between <font color="green">Mission and January</font>. There will be three changes.</li>
+           
+            <ol>
+              <li> <font color="green">Mission row and January column</font> change to the same color.</li>
+              <li> The Bar chart's title will change to Average Response Time <font color="green">  in Mission</font> in January 2019, which is corresponding to the cell you clicked.</li>
+              <li> The Bar chart's 4 columns will change to the different <font color="green">heights </font> deponding on Mission and January</li>
+             
+          </ol>
+          
           </p>
           <p>
             Clicking a bar in the bar chart applies that filter to the heat map. Click again to reset to all data points.
+            <li> For example, when You clike bar chart's single columm <font color="green">Non Life-threatening</font>, there will be two changes:</li>
+            <ol>
+              <li> The Heatmap's title will change to Average Response Time for <font color="green">Non Life-threatening calls in 2019</font></li>
+              <li> The heatmap will only show the average response time for <font color="green">Non Life-threatening</font></li>
+             
+          </ol>
+          
           </p>
         </p>  
+
+          <h4>D3 Implementation</h4>
+
+          <!-- Load d3.js -->
+          <script src="https://d3js.org/d3.v5.js"></script>
+          <div id="prototype3"></div>
+          <script src="javascript/prototype3.js"></script>
+
+       
         <h4>Findings Learned from This Visualization</h4>
         <p>
           <ul>
