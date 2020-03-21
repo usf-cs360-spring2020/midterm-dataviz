@@ -35,7 +35,7 @@ var space = {
 drawCircleLegend();
 drawColorLegend();
 
-let csv = 'bubbleplot\Fire_Department_Calls_for_Services.csv';
+let csv = 'bubbleplot/Fire_Department_Calls_for_Services.csv';
 
 d3.csv(csv, convertRow).then(drawBubblePlotMatrix);
 
@@ -300,7 +300,7 @@ function fadeOut() {
 
 
 function stationLookUp() {
-  let csv = 'bubbleplot\StationLookUp.csv';
+  let csv = 'bubbleplot/StationLookUp.csv';
 
   function convertRow(row, index) {
     let out = {};
