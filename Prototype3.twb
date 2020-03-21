@@ -531,7 +531,7 @@
           <groupfilter function='level-members' level='[none:Received DtTm:qk]' />
         </groupfilter>
       </group>
-      <layout dim-ordering='alphabetic' dim-percentage='0.687415' measure-ordering='alphabetic' measure-percentage='0.312585' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.697248' measure-ordering='alphabetic' measure-percentage='0.302752' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
@@ -1694,8 +1694,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='16' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97038' id='15' param='vert' type='layout-flow' w='98334' x='833' y='1481'>
+            <zone h='100000' id='18' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='17' param='vert' type='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='97038' id='1' is-fixed='true' name='Average response time per Neighborhood' show-caption='true' w='98334' x='833' y='1481'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1781,8 +1781,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='11' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='10' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='100000' id='13' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='12' param='vert' type='layout-flow' w='84000' x='8000' y='8000'>
                 <zone h='18250' id='8' mode='checkdropdown' name='Heat Map' param='[federated.0cn4ezz19ygy0w166k5ly1trcdz3].[none:Call Type Group:nk]' type='filter' w='16000' x='83200' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1851,6 +1851,11 @@
             <card pane-specification-id='1' param='[federated.0cn4ezz19ygy0w166k5ly1trcdz3].[avg:Calculation_247346160249446400:qk]' type='color' />
           </strip>
         </edge>
+        <edge name='bottom'>
+          <strip size='94'>
+            <card type='caption' />
+          </strip>
+        </edge>
       </cards>
       <viewpoint>
         <highlight>
@@ -1869,7 +1874,7 @@
       <viewpoints>
         <viewpoint name='Heat Map' />
       </viewpoints>
-      <active id='3' />
+      <active id='-1' />
       <simple-id uuid='{35E24C2D-056A-4A4B-A0CE-8619315A6C64}' />
     </window>
     <window class='worksheet' name='# incidents per Station'>
@@ -2127,7 +2132,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='1' />
+      <active id='-1' />
       <simple-id uuid='{42BC4FC7-F7FB-4052-A03E-5B6C07A666D6}' />
     </window>
   </windows>
