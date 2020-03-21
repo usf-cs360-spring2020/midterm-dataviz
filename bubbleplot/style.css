@@ -24,3 +24,7 @@ div.tooltip{
 #legend-svg circle{
   opacity: 0.2
 }
+
+#legend-svg rect.swatch {
+  stroke: black;
+}
