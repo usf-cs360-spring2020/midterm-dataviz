@@ -72,11 +72,11 @@ var databar = [];
 
 // Build color scale
 var myColor = d3.scaleLinear()
-    .range(["#ffffff", "#ff4010"])
-    .domain([3, 13]);
+     .range(["#ffffff", "#ff3010", "#600"])
+     .domain([3, 12, 17]);
 var myColorSel = d3.scaleLinear()
-    .range(["#ffffff", "#ff0080"])
-    .domain([3, 13]);
+    .range(["#ffffff", "#f00090", "#605"])
+    .domain([3, 12, 17]);
 
 function friendlyname(col) {
     return {

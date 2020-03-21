@@ -251,43 +251,53 @@
           </p>
 
           <h4>D3 Implementation</h4>
-          Average response time in minutes in 2019 for station 36, by Neighborhood and Call type
-          <h4><font color="red">(In progress, interactivity and legends will be done 
-            very soon)</font></h4>
+
           <!-- Load d3.js -->
           <script src="https://d3js.org/d3.v5.js"></script>
           <div id="prototype3"></div>
           <script src="javascript/prototype3.js"></script>
 
-        <h4>Data encodeing</h4>
+        <h4>Data encoding</h4>
           <p>
-            Average of Time to Arrival broken down by Watch Date Month vs.
-             Neighborhooods - Analysis Boundaries.  Color shows average of Time to Arrival.  The marks are labeled by average of Time to Arrival. The data is filtered on Call Type Group, Exclusions (On Scene DtTm,Received DtTm), Station Area and Watch Date Year. The Call Type Group filter keeps Alarm, Fire, Non Life-threatening and Potentially Life-Threatening. The Exclusions (On Scene DtTm,Received DtTm) filter keeps 300,288 members. The Station Area filter keeps 36. The Watch Date Year filter keeps 2019. The view is filtered on Neighborhooods - Analysis Boundaries,
-             which excludes Inner Richmond and Potrero Hill.
-            
+            Average of Time to Arrival is broken down by Watch Date Month vs.
+             Neighborhooods - Analysis Boundaries.  Color shows average of Time to Arrival.  The marks are labeled by average of Time to Arrival. The data is filtered on Call Type Group, Exclusions (On Scene DtTm,Received DtTm), Station Area and Watch Date Year. The Call Type Group filter keeps Alarm, Fire, Non Life-threatening and Potentially Life-Threatening. The Exclusions (On Scene DtTm,Received DtTm) filter keeps 300,288 members. The Station Area filter keeps 36. The Watch Date Year filter keeps 2019.            
+          </p>
+          <p>
+              Only neighborhoods that had at least one incident every month from station 36 are included.
           </p>  
           <h4>How to Interract with This Visualization?</h4>
           <p>
-            Thig;ja;gj;jh;jhgroeuurout
-            
+            Mouse over the heat map or bar chart to see details for a particular cell.
           </p>  
+          <p>
+            Clicking a cell in the heat map applies that filter to the bar chart. Click again to reset to all data points.
+          </p>
+          <p>
+            Clicking a bar in the bar chart applies that filter to the heat map. Click again to reset to all data points.
+          </p>
         </p>  
-        <h4>Interesting part about This Visualization</h4>
+        <h4>Findings Learned from This Visualization</h4>
         <p>
-          Thig;ja;gj;jh;jhgroeuurout 
+          <ul>
+            <li>Tenderloin, the neighborhood with the most number of incidents, has an average response time of 8.5 minutes.</li>
+            <li>Non-life threatening calls take longer to respond to than other types of calls, which makes sense because they have lower priority.</li>
+            <li>For this station, calls from the Mission neighborhood take the longest to respond to on average, and this is consistent across all months of the year. Perhaps the department should investigate ways to improve response time here.</li>
+          </ul>
         </p>  
         
         
           <h4>How this visualization supports the theme?</h4>
           <p>
-            
-            Visualizations helps in analysing the number of incidents in different neighbourhoods of San Francisco and the average response time from the fire station after receiving the call.
+            Visualizations helps in analysing the number of incidents in different neighbourhoods of San Francisco, and we can see here for a particular station (36) both the caseload and response times per neighborhood.
           </p>
 
-          <h4>Inspirations</h4>
+          <h4
+          >Inspirations</h4>
           <p>
-            kag;jrgojejge;oah;eh
-            
+            <ul>
+                <li><a href="https://www.d3-graph-gallery.com/graph/heatmap_basic.html">Most basic heatmap in d3.js</a></li>
+                <li><a href="https://observablehq.com/@sjengle/interactivity">Interactivity (by Sophie Engle)</a></li>
+            </ul>
           </p>  
 
 
