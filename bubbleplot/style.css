@@ -25,6 +25,10 @@ div.tooltip{
   opacity: 0.2
 }
 
+.legendCells .hidden {
+  opacity: 0.1;
+}
+
 #legend-svg rect.swatch {
   stroke: black;
 }
