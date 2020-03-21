@@ -1,6 +1,6 @@
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 10, bottom: 30, left: 125 },
+var margin = { top: 10, right: 10, bottom: 40, left: 125 },
     width = 960 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -61,6 +61,33 @@ svg.append('g').attr('id', 'yaxis');
 svg2.append('g').attr('id', 'chart');
 svg2.append('g').attr('id', 'xaxis');
 svg2.append('g').attr('id', 'yaxis');
+// X axis label:
+svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width / 2)
+    .attr("y", height + margin.top + 25)
+    .text("Month");
+// Y axis label:
+svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+10)
+    .attr("x", -margin.top -height/2+50)
+    .text("Neighborhood")
+// X axis label:
+svg2.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width / 2)
+    .attr("y", height + margin.top + 25)
+    .text("Call Type");
+// Y axis label:
+svg2.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+30)
+    .attr("x", -margin.top)
+    .text("Average response time (min)")
+
 
 var selected_calltype = 'All'
 var selected_month = 'All'
@@ -72,8 +99,8 @@ var databar = [];
 
 // Build color scale
 var myColor = d3.scaleLinear()
-     .range(["#ffffff", "#ff3010", "#600"])
-     .domain([3, 12, 17]);
+    .range(["#ffffff", "#ff3010", "#600"])
+    .domain([3, 12, 17]);
 var myColorSel = d3.scaleLinear()
     .range(["#ffffff", "#f00090", "#605"])
     .domain([3, 12, 17]);
