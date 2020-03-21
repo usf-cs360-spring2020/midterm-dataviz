@@ -1,6 +1,6 @@
 let csv = 'javascript/Fire_Department_Calls_for_Service3.csv';
 
-const svg_width = 960;
+const svg_width = 1100;
 const svg_height = 500;
 
 var margin = {
@@ -248,7 +248,7 @@ function draw (data) {
             });
 
         test.append("rect")
-            .attr("x", plot.width - 18)
+            .attr("x", plot.width - 145)
             .attr("y", 24)
             .attr("width", 10)
             .attr("height", 10)
@@ -258,7 +258,7 @@ function draw (data) {
             .style("opacity", 1);
 
         test.append("text")
-            .attr("x", plot.width - 24)
+            .attr("x", plot.width - 155)
             .attr("y", 30)
             .attr("font-size", 12)
             .attr("dy", ".35em")
@@ -273,7 +273,7 @@ function draw (data) {
         legend.append("text")
             .attr("class", "label")
             .attr("font-size", 6)
-            .attr("x", 30)
+            .attr("x", 40)
             .attr("y", "7")
             .attr("dy", ".35em")
             .style("opacity", "1")
@@ -308,6 +308,10 @@ function draw (data) {
                 console.log("clicked");
                 updateByMonth(mainData); 
             });
+
+        /*
+        This function groups data by months
+         */
 
         function updateByMonth (d) {
 
@@ -382,7 +386,7 @@ function draw (data) {
             }
     
             console.log("count bounds:", [countMin, countMax]);
-
+        
             x0 = d3.scaleBand()
                 .domain(months)
                 .rangeRound([0, plot.width])
@@ -429,7 +433,9 @@ function draw (data) {
                 .attr("id", "x-axis")
                 .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; })
                 .style("opacity","1");
-            xGroup.call(xAxis.tickSize(-plot.height, 200, 0));
+
+            xGroup.call(xAxis.tickSize(-plot.height, 200, 0).tickFormat(""));
+
             xGroup.attr("transform", "translate(0," + plot.height + ")");
 
             yGroup = plots.append("g")
@@ -462,6 +468,21 @@ function draw (data) {
                 .data(function(d) {
                     return d.values;
                 });
+
+            bars.enter().append("text")
+                .attr("class","barMonths")
+                .attr("font-size", 8)
+                .attr("x", -(plot.height + 4))
+                .attr("y", function(d) { return 5 + x1(d.month); })
+                .attr('transform', 'rotate(-90)')
+                .transition().duration(1000).delay(function(d,i){ 
+                    return 1300 + 100 * i; 
+                })
+                .style("text-anchor", "end")
+                .text(function(d){
+                    return d.month;
+                })
+                
 
             bars.enter().append("rect")
                 .attr("class", "bar")
@@ -536,9 +557,7 @@ function draw (data) {
             legend = d3.select('body').select('#legend');
 
             test = legend.selectAll(".legend")
-                .data(data[0].values.map(function(d) {
-                    return d.month;
-                }))
+                .data(data)
                 .enter().append("g")
                 .attr("class", "legend")
                 .style("opacity", "0")
@@ -547,23 +566,24 @@ function draw (data) {
                 });
 
             test.append("rect")
-                .attr("x", plot.width - 18)
+                .attr("x", plot.width - 155)
                 .attr("y", 24)
                 .attr("width", 10)
                 .attr("height", 10)
                 .style("fill", function(d) {
-                    return color(d);
+                    return color(d.battalion);
                 })
                 .style("opacity", 1);
 
             test.append("text")
-                .attr("x", plot.width - 24)
+                .attr("x", plot.width - 165)
                 .attr("y", 30)
                 .attr("font-size", 12)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
                 .text(function(d) {
-                  return d;
+                    console.log("D", d)
+                    return d.battalion;
                 });
 
             test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
@@ -579,7 +599,7 @@ function draw (data) {
                 .attr("dy", ".35em")
                 .style("opacity", "1")
                 .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
-                .text("Month")
+                .text("Battalion")
 
 
             button = d3.select('body').select("#updateButton");
@@ -612,6 +632,10 @@ function draw (data) {
                 });
 
         }
+
+        /*
+        This function groups data by battalion
+        */
 
         function updateByBattalion (d) {
 
@@ -849,7 +873,7 @@ function draw (data) {
                 });
 
             test.append("rect")
-                .attr("x", plot.width - 18)
+                .attr("x", plot.width - 155)
                 .attr("y", 24)
                 .attr("width", 10)
                 .attr("height", 10)
@@ -859,7 +883,7 @@ function draw (data) {
                 .style("opacity", 1);
 
             test.append("text")
-                .attr("x", plot.width - 24)
+                .attr("x", plot.width - 165)
                 .attr("y", 30)
                 .attr("font-size", 12)
                 .attr("dy", ".35em")
@@ -952,18 +976,18 @@ function split (string){
 
 function dateFormatter (d){
     let month = new Array();
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
+    month[0] = "Jan.";
+    month[1] = "Feb.";
+    month[2] = "Mar.";
+    month[3] = "Apr.";
+    month[4] = "May.";
     month[5] = "June";
     month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
+    month[7] = "Aug.";
+    month[8] = "Sept.";
+    month[9] = "Oct.";
+    month[10] = "Nov.";
+    month[11] = "Dec.";
     
     return month[d-1];
 }

@@ -116,6 +116,23 @@
     
             <h5>Aryan Dilip Choudhary</h5>
 
+          <h4>Wrangling specific to prototype</h4>
+          <p>For this tableau prototype the data is filtered by "Batallion" not "B99", "Year" is 2019. The data is grouped by Batallion, Watch Date (Months). The data is aggregated by Incident Number as sum.</p>
+
+            <pre style="font-size: 14px; font-family: Dank Mono Regular;">
+    Filtered By: Batallion not "B99", Year 2019
+    Grouping By: Batallion, Watch Date (Months), and Call Type Group (Interactivity)
+    Aggregated By: Incident Number (sum)
+            </pre>
+
+            <h4> Tableau Prototype [Beta Release]</h4>
+            <img src="midterm_prototype_1.png" alt="prototype1" width="960" height="500">
+
+            <h4> Tableau Prototypes [Final Release]</h4>
+            <img src="midterm_prototype_1b.png" alt="prototype1b" width="1200" height="500">
+
+            <img src="midterm_prototype_1b_interactive.png" alt="prototype1c" width="1200" height="500">
+
             <section class="section">
               <h4>D3 version</h4>
               
@@ -129,7 +146,7 @@
                 <svg id ="legend"></svg>
 
                 <p class="is-size-7 has-text-grey">
-                  Source: <a href="https://opportunityinsights.org/paper/mobilityreportcards/" target="_blank">https://opportunityinsights.org/paper/mobilityreportcards/</a>
+                  Source: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data" target="_blank">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data</a>
 
                   <br>
 
@@ -139,9 +156,6 @@
               </div>
             </section>
 
-            <h4> Tableau Prototype</h4>
-            <img src="midterm_prototype_1.png" alt="prototype1" width="960" height="500">
-
           <script src="https://d3js.org/d3.v5.min.js"></script>
           <script src="javascript/d3-button.js"></script>
 
@@ -150,41 +164,65 @@
 
          <script src="javascript/prototype1.js"></script>
 
+         <h4>Interactivity for the Visualization</h4>
+         <p>Following interactivities has been implemented for the visualization:<br>
+            <ul>
+              <li>Hovering over a bar highlights all the bars related to that particular Batallion and fades all of the bars belonging to the other Batallions.</li>
 
-          <h4>Wrangling specific to prototype</h4>
-          <p>For this tableau prototype the data is filtered by "Batallion" not "B99", "Year" is 2019. The data is grouped by Batallion, Watch Date (Months). The data is aggregated by Incident Number as sum.</p>
+              <li>A button is provided at the top for grouping the data based on battalion. When that button is pressed, another button is provided for grouping based on month.</li>
 
-            <pre style="font-size: 14px; font-family: Dank Mono Regular;">
-    Filtered By: Batallion not "B99", Year 2019
-    Grouping By: Batallion, Watch Date (Months), and Call Type Group (Interactivity)
-    Aggregated By: Incident Number (sum)
-            </pre>
+              <li>Provided on demand data display for each bar. When a user hovers on a bar then a tool tip pops up with details regarding, Battalion, Month, Number of incidents and year of that data element.</li>
+            </ul>
+        </p>
+
+         <h4>Peer Review Feedback</h4>
+         <p>
+           <ul>
+
+              <li>Use a non-paired color scheme. The paired color scheme gives the impression that some battalions are related, which is not the case. Battalion labels on x axis are sometimes missing</li>
+
+              <li>Since there is already color encoding, it seems unnecessary to have the bottom axis as well, data ink can be reduced there. The number of incidents also can be reliant on population for the neighborhood that battalion serves, so maybe a ratio would be better for lie factor rather than raw count. Otherwise, this seems like a strong visualization, and the planned interactivity seems very useful for interpretation.</li>
+
+              <li>The graph is easy to understand and very dense in a not-overwhelming way. Maybe there is too much non-data related ink in the graph e.g B02 extra zeros and Month label.</li>
+
+              <li>color encoding very clear for readers, high data density</li>
+
+              <li>This one is very interesting  however discerning the colors was a bit hard for me. Also seeing all the battalions names could help.</li>
+
+              <li>There is a lot of colors, it might be helpful to add a very small margin in between months, I think the planned interactivity will be really cool and can't wait to see. </li>
+
+              <li>The bar chart looks good and easy to read. the x axis batallion names are too squished together.  Overall with the planeed interactivity it will be really good.</li>
+
+              <li>Nice chart with good presentation</li>
+
+              <li>Excellent Job!</li>
+
+           </ul>
+         </p>
+
+         <h4>Data Encoding and Interpretation</h4>
+
+         <p>Avg. number of Incidents vs Months. Colour shows different Battalion. The length of bar shows the incident number count. The x axis(vertical axis) is represented by Month and y axis is represented by Incident Numbers.</p>
 
           <h4>Conclusion based on the prototype</h4>
           <p>For year 2019, "B02" is the most active Batallion. December 2019 is the month with the highest number of incidents for the Batallion "B02". The second most active Batallion is "B03". The prototype shows an increase in number of incidents from January to December except for the month of July and November.</p>
 
-          <h4>Planned Interactivity</h4>
-          <p>I have planned for following interactivities in future releases:
-
-            <ul>
-
-              <li>Highlight all the bars related to a particular Batallion if one of the bars of that particular Batallion is hovered on i.e. Fade all of the non-hovered bars belonging to the other Batallions.</li>
-
-              <li>Providing a toggle for ordering the data by Batallion for the Year 2019<br>
-                <img src="midterm_prototype_1_interactive.png" alt="prototype interactive" width="400" height="300">
-              </li>
-
-              <li>Hovering over a bar will show a pie chart showing the number of incidents based on call type group (Alarm, Fire, Non-life Threatning, and Life Threatning).</li>
-
-              <li>on demand data display i.e. when a user hovers on a circle then a tool tip pops up with specific details of the data</li>
-
-            </ul>
-
-          </p>
-
           <h4>How this visualization supports the theme?</h4>
 
           <p>Visualization helps in analysing the most active/busiest batallion for the year 2019.</p>
+
+          <h4>Inspiration</h4>
+          <p>
+            <ul>
+              <li><a href="https://bl.ocks.org/Andrew-Reid/64a6c1892d1893009d2b99b8abee75a7" target="_blank">Grouped Bar Chart Toggle Series</a></li>
+
+              <li><a href="https://observablehq.com/@sjengle/interactivity" target="_blank">Interactive Scatter Plot By Sophie Engle</a></li>
+
+              <li><a href="http://bl.ocks.org/phil-pedruco/9032348" target="_blank">Bar chart with mouseover event</a></li>
+
+              <li><a href="http://bl.ocks.org/caged/6476579" target="_blank">Using d3-tip to add tooltips to a d3 bar chart</a></li>
+            </ul>
+          </p>
 
 
 
