@@ -1,10 +1,13 @@
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 10, bottom: 30, left: 120 },
+var margin = { top: 10, right: 10, bottom: 30, left: 125 },
     width = 960 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
+// append the svg objects to the body of the page
+var title1 = d3.select("#prototype3").append("div")
+    .style("text-align", "center").style("width", "960px")
+    .append("h4")
 var svg = d3.select("#prototype3")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -13,7 +16,11 @@ var svg = d3.select("#prototype3")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-// append the svg object to the body of the page
+d3.select("#prototype3").append("h1");
+
+var title2 = d3.select("#prototype3").append("div")
+    .style("text-align", "center").style("width", "960px")
+    .append("h4")
 var svg2 = d3.select("#prototype3")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -23,8 +30,8 @@ var svg2 = d3.select("#prototype3")
         "translate(" + margin.left + "," + margin.top + ")");
 
 // Labels of row and columns
-var calltypes = ['Alarm', 'Fire', 'Potentially Life-Threatening', 'Non Life-threatening', 'All Call Types']
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Total']
+var calltypes = ['Alarm', 'Fire', 'Potentially Life-Threatening', 'Non Life-threatening', 'All']
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'All']
 var hoods = ['All Neighborhoods', 'Western Addition', 'Tenderloin', 'South of Market', 'Mission', 'Hayes Valley']
 
 // Build heatmap scales and axis:
@@ -55,8 +62,8 @@ svg2.append('g').attr('id', 'chart');
 svg2.append('g').attr('id', 'xaxis');
 svg2.append('g').attr('id', 'yaxis');
 
-var selected_calltype = 'All Call Types'
-var selected_month = 'Total'
+var selected_calltype = 'All'
+var selected_month = 'All'
 var selected_hood = 'All Neighborhoods'
 
 var rawcsv;
@@ -100,8 +107,8 @@ function query(data, calltype, month, hood) {
     var count = 0;
 
     for (const row of data) {
-        if ([row.calltype, 'All Call Types'].includes(calltype) &&
-            [row.month, 'Total'].includes(month) &&
+        if ([row.calltype, 'All'].includes(calltype) &&
+            [row.month, 'All'].includes(month) &&
             [row.hood, 'All Neighborhoods'].includes(hood)) {
             weightedsum += row.avgtime * row.count;
             count += 1 * row.count;
@@ -138,6 +145,9 @@ function filter_bar() {
 }
 
 function redraw() {
+    title1.html("Average Response Time for Station 36 for <font color=\"blue\">" + selected_calltype + "</font> Calls in 2019");
+    title2.html("Average Response Time for Station 36 in <font color=\"blue\">" + selected_hood + "</font> in <font color=\"blue\">" + selected_month + "</font> 2019");
+
     filter_heat();
     filter_bar();
 
@@ -171,7 +181,7 @@ function redraw() {
     });
     rects.on("click", function (d) {
         if (d.month == selected_month && d.hood == selected_hood) {
-            selected_month = 'Total';
+            selected_month = 'All';
             selected_hood = 'All Neighborhoods';
         } else {
             selected_month = d.month;
@@ -207,7 +217,7 @@ function redraw() {
     });
     rects.on("click", function (d) {
         if (d.calltype == selected_calltype) {
-            selected_calltype = 'All Call Types';
+            selected_calltype = 'All';
         } else {
             selected_calltype = d.calltype;
         }
