@@ -140,21 +140,120 @@
 
           <img src="midterm_prototype_3.png" alt="prototype3a" width="960">
           <img src="midterm-prototype-3b.png" alt="prototype3b" width="960">
+          <br>
 
           <h4>Conclusion based on the prototype</h4>
           <p>
             The pie chart prototype shows number of incidents in different neighborhoods of San Francisco,
             and the response time from fire station for citizens having different emergency calls.
             From the prototype above, we can see that the Tenderloin, South of Market and Mission  are the 
-            neighborhoods having the most number of incidents with all having good response time (below 10 minutes). It also shows that the fire station response time for the average case is around 10 minutes. The neighbourhood with most number of incidents is Tendelorian (45,491 cases) with an average response time of 8.8 min.
+            neighborhoods having the most number of incidents with all having good response time (below 10 minutes). 
+            It also shows that the fire station response time for the average case is around 10 minutes. 
+            The neighbourhood with most number of incidents is Tendelorian (45,491 cases) with an average 
+            response time of 8.8 min.
           </p>
           <p> 
-            The heatmap prototype shows average response time per month of Station "36" for each Neighbourhood which lies under Batallion "B02". From the prototype above, we can say that, the response time for the Financial District in the month of January is above the average response time. This is also the case for Potrero Hill for the month of April, May, June, July, September and October. The neighbourhood of Inner Richmond, South of Market, Hayes Valley, Tenderloin, and Western Addition all have response time below the average response time.
+            The heatmap prototype shows average response time per month of 
+            Station "36" for each Neighbourhood which lies under Batallion 
+            "B02". From the prototype above, we can say that, the response 
+            time for the Financial District in the month of January is above
+             the average response time. This is also the case for Potrero 
+             Hill for the month of April, May, June, July, September and 
+             October. The neighbourhood of Inner Richmond, South of Market,
+              Hayes Valley, Tenderloin, and Western Addition all have 
+              response time below the average response time.
+          </p>
+          <br>
+
+          <h4>Feedback From Peer Review </h4>
+          <p>
+            <table>
+              <thead>
+                  <tr>
+                      <th>Ratings</th>
+                      <th>Score</th>
+                
+                  </tr>
+              </thead>
+              <tbody>
+  
+                  <tr>
+                      <td>
+                        Rate the non-color encodings on a scale of 5 (appropriate for data type, strong visual channels) to 1 (inappropriate for data type, weak visual channels).
+                        </td>
+                      <td> <font color="green">4.3</font></td>
+                      
+                  </tr>
+  
+                  <tr>
+                      <td>
+                        Rate the lie factor (including misleading context, weak visual encodings, or exaggerated encodings) on a scale of 5 (low lie factor) to 1 (high lie factor).
+                        </td>
+                        <td> <font color="green">4.3</font></td>
+                     
+                  </tr>
+              </tbody>
+          </table>
+  
+          <table>
+            <thead>
+                <tr>
+                    <th>comments</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><font color="green">Color scheme should not be diverging because the data it is encoding does not have negative values.</font> I like how the heat map shows some months where the response time is worse than most others and makes that discrepancy clear.
+                      <font color="green">It is also hard to tell which label in the pie chart refers to which slice of the pie.</font></td>
+                  
+                </tr>
+
+                <tr>
+                    <td>
+                      The number of incidents also can be reliant on population for the neighborhood that battalion serves, so maybe a ratio would be better for lie factor rather than raw count. <font color="green">The labeling for the pie chart is a bit difficult to parse for some of the smaller slices, if that is changed during interactivity to show details as the user hovers over a slice it would help with interpretation.</font> Otherwise, the two charts seem good together and the interactivity seems like it will provide good information.
+                      /td>
+                    
+                </tr>
+
+            </tbody>
+            <table>
+              <thead>
+                  <tr>
+                      <th>Changes I made</th>
+                  </tr>
+              </thead>
+              <tbody>
+  
+                  <tr>
+                      <td>The scores I got from feedback are pretty good except color encodeing.
+                         After reading Feedback comments from Classmates, 
+                         I think it is unnessary for me to have pie char. But 
+                         Classmates like my heapmap a lot. Because it not just look nice but also connect with my 
+                         another two parters' analysing. I changed the color of the heatmap.
+
+                      </td>
+                    
+                  </tr>
+  
+               
+  
+              </tbody>
+        </table>
+
+        <hr>
+        <h4>New Tableau Prototype After Feedback</h4>
+
+      
+          <img src="HeatMap.png" alt="prototype3b" width="960">
+
+            
           </p>
 
           <h4>D3 Implementation</h4>
           Average response time in minutes in 2019 for station 36, by Neighborhood and Call type
-          <h4><font color="red">(In progress, interactivity and legends will be done very soon)</font></h4>
+          <h4><font color="red">(In progress, interactivity and legends will be done 
+            very soon)</font></h4>
           <!-- Load d3.js -->
           <script src="https://d3js.org/d3.v5.js"></script>
           <div id="prototype3"></div>
