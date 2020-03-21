@@ -347,6 +347,8 @@ function drawCircleLegend() {
     .orient('vertical')
     .on('cellclick', function(d) {
       toggleDataPoints(d);
+      const legendCell = d3.select(this);
+      legendCell.classed('hidden', !legendCell.classed('hidden')); // toggle opacity of legend item
     });
 
   group.call(legendSize);
@@ -389,7 +391,11 @@ function drawColorLegend() {
     .shapeWidth(20)
     .shapeHeight(20)
     .labelOffset(12)
-    .on('cellclick', filterCallTypeGroup);
+    .on('cellclick', function(d){ 
+      filterCallTypeGroup(d);
+      const legendCell = d3.select(this);
+      legendCell.classed('hidden', !legendCell.classed('hidden')); // toggle opacity of legend item
+    });
 
   group.call(colorLegend);
 }
@@ -428,8 +434,8 @@ function filterStation() {
     });
 }
 
-function filterCallTypeGroup() {
-  let c = d3.select(this).text();
+function filterCallTypeGroup(c) {
+  //let c = d3.select(this).text();
   d3.selectAll("#main-svg circle")
     .filter(function(d) {
       return d[3] != c;
