@@ -12,3 +12,15 @@ div.tooltip{
 .label{
   font-weight: normal;
 }
+
+#main-svg circle.hidden{
+  opacity: 0.1;
+}
+
+#main-svg circle{
+  opacity: 0.75
+}
+
+#legend-svg circle{
+  opacity: 0.2
+}
