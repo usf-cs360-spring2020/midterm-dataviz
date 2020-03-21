@@ -1,4 +1,3 @@
-
 // set the dimensions and margins of the graph
 var margin = { top: 40, right: 10, bottom: 40, left: 125 },
     width = 960 - margin.left - margin.right,
@@ -69,6 +68,7 @@ svg.append('g').attr('id', 'yaxis');
 svg2.append('g').attr('id', 'chart');
 svg2.append('g').attr('id', 'xaxis');
 svg2.append('g').attr('id', 'yaxis');
+
 // X axis label:
 svg.append("text")
     .attr("text-anchor", "end")
@@ -133,7 +133,6 @@ g.append("g")
 var selected_calltype = 'All'
 var selected_month = 'All'
 var selected_hood = 'All Neighborhoods'
-
 var rawcsv;
 var dataheat = [];
 var databar = [];
@@ -207,7 +206,6 @@ function filter_bar() {
 function redraw() {
     title1.html("Average Response Time for Station 36 for <font color=\"blue\">" + selected_calltype + "</font> Calls in 2019");
     title2.html("Average Response Time for Station 36 in <font color=\"blue\">" + selected_hood + "</font> in <font color=\"blue\">" + selected_month + "</font> 2019");
-
     filter_heat();
     filter_bar();
 
@@ -254,9 +252,9 @@ function redraw() {
     svg2.select("g#chart").selectAll('rect').remove()
         .data(databar, function (d) { return d.group + ':' + d.variable; })
         .join("rect")
-        .attr("x", function (d) { return x2(d.calltype) + x2.bandwidth()*0.1 })
+        .attr("x", function (d) { return x2(d.calltype) + x2.bandwidth() * 0.1 })
         .attr("y", function (d) { return y2(d.avgtime) })
-        .attr("width", x2.bandwidth()*0.8)
+        .attr("width", x2.bandwidth() * 0.8)
         .attr("height", function (d) { return height - y2(d.avgtime) })
         .style("fill", function (d) {
             return (d.calltype == selected_calltype) ?
@@ -269,7 +267,6 @@ function redraw() {
             .style("stroke", "green")
             .style("stroke-width", 2);
         ttip(d);
-        d3.select(status).text("highlight: " + d.letter);
     });
     rects.on("mouseout", function (d) {
         d3.select(this).style("stroke", null);
@@ -284,13 +281,18 @@ function redraw() {
         redraw();
     });
 
-
     // Axes
     svg.select("g#xaxis").html(null)
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x))
         .selectAll("text")
         .style("font-size", 13)
+        .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
+        .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
+        .on("click", function (x) {
+            selected_month = x;
+            redraw();
+        })
         .filter(x => x == selected_month)
         .style("font-weight", "bold")
         .style("color", "blue")
@@ -298,6 +300,12 @@ function redraw() {
         .call(d3.axisLeft(y))
         .selectAll("text")
         .style("font-size", 13)
+        .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
+        .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
+        .on("click", function (x) {
+            selected_hood = x;
+            redraw();
+        })
         .filter(x => x == selected_hood)
         .style("font-weight", "bold")
         .style("color", "blue")
@@ -306,6 +314,12 @@ function redraw() {
         .call(d3.axisBottom(x2))
         .selectAll("text")
         .style("font-size", 13)
+        .on("mouseover", function (d) { d3.select(this).style("stroke", "green").style("stroke-width", 0.5); })
+        .on("mouseout", function (d) { d3.select(this).style("stroke", null); })
+        .on("click", function (x) {
+            selected_calltype = x;
+            redraw();
+        })
         .filter(x => x == selected_calltype)
         .style("font-weight", "bold")
         .style("color", "blue")
@@ -313,13 +327,11 @@ function redraw() {
         .call(d3.axisLeft(y2))
         .selectAll("text")
         .style("font-size", 13)
-
 }
 
 //Read the data
 d3.tsv("station36.csv")
     .then(function (data) {
         rawcsv = data;
-        console.log(query(data, 'Fire', 'January', 'Tenderloin'))
         redraw();
     })
