@@ -32,46 +32,28 @@ var x = d3.scaleBand()
     .range([0, width])
     .domain(months)
     .padding(0.01);
-svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-    .style("font-size", 13)
-    // .attr("transform", "rotate(-15)")
-    // .style("text-anchor", "end")
-    .style("font-size", 13)
-    // .style("fill", "#69a3b2")
-// Build X scales and axis:
+
 var y = d3.scaleBand()
     .range([height, 0])
     .domain(hoods)
     .padding(0.01);
-svg.append("g")
-    .call(d3.axisLeft(y))
-    .selectAll("text")
-    .style("font-size", 13)
 
 // Build barchart scales and axis:
 var x2 = d3.scaleBand()
     .range([0, width])
     .domain(calltypes)
     .padding(0.01);
-svg2.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x2))
-    .selectAll("text")
-    .style("font-size", 13)
 
 var y2 = d3.scaleLinear()
     .range([height, 0])
     .domain([0, 20])
-svg2.append("g")
-    .call(d3.axisLeft(y2))
-    .selectAll("text")
-    .style("font-size", 13)
 
 svg.append('g').attr('id', 'chart');
+svg.append('g').attr('id', 'xaxis');
+svg.append('g').attr('id', 'yaxis');
 svg2.append('g').attr('id', 'chart');
+svg2.append('g').attr('id', 'xaxis');
+svg2.append('g').attr('id', 'yaxis');
 
 var selected_calltype = 'All Call Types'
 var selected_month = 'Total'
@@ -83,8 +65,11 @@ var databar = [];
 
 // Build color scale
 var myColor = d3.scaleLinear()
-    .range(["#ffeedd", "#ff4010"])
-    .domain([4, 13]);
+    .range(["#ffffff", "#ff4010"])
+    .domain([3, 13]);
+var myColorSel = d3.scaleLinear()
+    .range(["#ffffff", "#ff0080"])
+    .domain([3, 13]);
 
 function friendlyname(col) {
     return {
@@ -107,7 +92,7 @@ function ttip(d) {
         .enter()
         .append("tr");
     rows.append("th").html(key => friendlyname(key));
-    rows.append("td").text(key => key == 'avgtime' ? (Math.round(d[key] * 10)/10 + ' minutes') : d[key]);
+    rows.append("td").text(key => key == 'avgtime' ? (Math.round(d[key] * 10) / 10 + ' minutes') : d[key]);
 }
 
 function query(data, calltype, month, hood) {
@@ -127,6 +112,7 @@ function query(data, calltype, month, hood) {
 }
 
 function filter_heat() {
+    dataheat = [];
     for (hood of hoods) {
         for (month of months) {
             [avgtime, count] = query(rawcsv, selected_calltype, month, hood)
@@ -140,6 +126,7 @@ function filter_heat() {
     }
 }
 function filter_bar() {
+    databar = [];
     for (calltype of calltypes) {
         [avgtime, count] = query(rawcsv, calltype, selected_month, selected_hood)
         databar.push({
@@ -151,20 +138,26 @@ function filter_bar() {
 }
 
 function redraw() {
+    filter_heat();
+    filter_bar();
+
     d3.selectAll("div#details").remove();
     data = rawcsv;
 
     // Heatmap
-    svg.select("g#chart").selectAll('rect')
+    svg.select("g#chart").selectAll('rect').remove()
         .data(dataheat, function (d) { return d.group + ':' + d.variable; })
         .join("rect")
         .attr("x", function (d) { return x(d.month) })
         .attr("y", function (d) { return y(d.hood) })
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
-        .style("fill", function (d) { return myColor(d.avgtime) });
+        .style("fill", function (d) {
+            return (d.month == selected_month || d.hood == selected_hood) ?
+                myColorSel(d.avgtime) : myColor(d.avgtime)
+        });
 
-    rects = svg.select("g#chart").selectAll("rect");
+    rects = svg.select("g#chart").selectAll('rect');
     rects.on("mouseover", function (d) {
         d3.select(this)
             .raise() // bring to front
@@ -176,19 +169,31 @@ function redraw() {
         d3.select(this).style("stroke", null);
         d3.selectAll("div#details").remove();
     });
+    rects.on("click", function (d) {
+        if (d.month == selected_month && d.hood == selected_hood) {
+            selected_month = 'Total';
+            selected_hood = 'All Neighborhoods';
+        } else {
+            selected_month = d.month;
+            selected_hood = d.hood;
+        }
+        redraw();
+    });
 
     // Bar chart
-    svg2.select("g#chart").selectAll('rect')
+    svg2.select("g#chart").selectAll('rect').remove()
         .data(databar, function (d) { return d.group + ':' + d.variable; })
         .join("rect")
         .attr("x", function (d) { return x2(d.calltype) })
         .attr("y", function (d) { return y2(d.avgtime) })
         .attr("width", x2.bandwidth())
         .attr("height", function (d) { return height - y2(d.avgtime) })
-        .style("fill", function (d) { return myColor(d.avgtime) });
-
-    rects = svg2.select("g#chart").selectAll("rect");
-    rects.on("mouseover.highlight", function (d) {
+        .style("fill", function (d) {
+            return (d.calltype == selected_calltype) ?
+                myColorSel(d.avgtime) : myColor(d.avgtime)
+        });
+    rects = svg2.select("g#chart").selectAll('rect');
+    rects.on("mouseover", function (d) {
         d3.select(this)
             .raise() // bring to front
             .style("stroke", "green")
@@ -196,10 +201,49 @@ function redraw() {
         ttip(d);
         d3.select(status).text("highlight: " + d.letter);
     });
-    rects.on("mouseout.highlight", function (d) {
+    rects.on("mouseout", function (d) {
         d3.select(this).style("stroke", null);
         d3.selectAll("div#details").remove();
     });
+    rects.on("click", function (d) {
+        if (d.calltype == selected_calltype) {
+            selected_calltype = 'All Call Types';
+        } else {
+            selected_calltype = d.calltype;
+        }
+        redraw();
+    });
+
+
+    // Axes
+    svg.select("g#xaxis").html(null)
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .style("font-size", 13)
+        .filter(x => x == selected_month)
+        .style("font-weight", "bold")
+        .style("color", "blue")
+    svg.select("g#yaxis").html(null)
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        .style("font-size", 13)
+        .filter(x => x == selected_hood)
+        .style("font-weight", "bold")
+        .style("color", "blue")
+    svg2.select("g#xaxis").html(null)
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x2))
+        .selectAll("text")
+        .style("font-size", 13)
+        .filter(x => x == selected_calltype)
+        .style("font-weight", "bold")
+        .style("color", "blue")
+    svg2.select("g#yaxis").html(null)
+        .call(d3.axisLeft(y2))
+        .selectAll("text")
+        .style("font-size", 13)
+
 }
 
 //Read the data
@@ -207,7 +251,5 @@ d3.tsv("station36.csv")
     .then(function (data) {
         rawcsv = data;
         console.log(query(data, 'Fire', 'January', 'Tenderloin'))
-        filter_heat();
-        filter_bar();
         redraw();
     })
