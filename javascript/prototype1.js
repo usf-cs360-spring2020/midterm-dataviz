@@ -255,11 +255,7 @@ function draw (data) {
             .style("fill", function(d) {
                 return color(d);
             })
-            .style("opacity", 1)
-            .on("click",function(d) { 
-                console.log("clicked");
-                updateByMonth(mainData); 
-            });
+            .style("opacity", 1);
 
         test.append("text")
             .attr("x", plot.width - 24)
@@ -350,12 +346,12 @@ function draw (data) {
                 .entries(d)
                 .map(function(group) {
                     return {
-                    "month": group.key,
+                    "battalion": group.key,
                     "values": group.values.map(function(subgroup) {
                         return {
-                        "battalion": subgroup.key,
+                        "month": dateFormatter(subgroup.key),
                         "incident": subgroup.value,
-                        "month": dateFormatter(group.key),
+                        "battalion": group.key,
                         "year": "2019"
                         }
                     })
@@ -366,11 +362,11 @@ function draw (data) {
 
             data = groupedByBattalion;
 
-            categories = data[0].values.map(value => value.battalion);
+            categories = data[0].values.map(value => value.month);
             console.log("categories:", categories);
 
             months = data.map(function(d) {
-                return d.month;
+                return d.battalion;
             });
             console.log("months:", months);
 
@@ -457,7 +453,7 @@ function draw (data) {
                 .enter().append("g")
                 .attr("class", "g")
                 .attr("transform", function(d) {
-                    return "translate(" + x0(d.month) + ",0)";
+                    return "translate(" + x0(d.battalion) + ",0)";
                 });
 
             console.log("Data final: ", data);
@@ -471,7 +467,7 @@ function draw (data) {
                 .attr("class", "bar")
                 .attr("width", x1.bandwidth())
                 .attr("x", function(d) {
-                    return x1(d.battalion);
+                    return x1(d.month);
                 })
                 .style("fill", function(d) {
                     return color(d.battalion);
@@ -507,6 +503,8 @@ function draw (data) {
                         .data(Object.keys(d))
                         .enter()
                         .append("tr");
+
+                        console.log("jdafkjkdasjf;", d)
     
                     rows.append("th").text(key => key);
                     rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
@@ -539,7 +537,7 @@ function draw (data) {
 
             test = legend.selectAll(".legend")
                 .data(data[0].values.map(function(d) {
-                    return d.battalion;
+                    return d.month;
                 }))
                 .enter().append("g")
                 .attr("class", "legend")
@@ -556,11 +554,7 @@ function draw (data) {
                 .style("fill", function(d) {
                     return color(d);
                 })
-                .style("opacity", 1)
-                .on("click",function(d) { 
-                    console.log("clicked");
-                    updateByBattalion(mainData); 
-                });
+                .style("opacity", 1);
 
             test.append("text")
                 .attr("x", plot.width - 24)
@@ -569,7 +563,7 @@ function draw (data) {
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
                 .text(function(d) {
-                  return dateFormatter(d);
+                  return d;
                 });
 
             test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
@@ -862,11 +856,7 @@ function draw (data) {
                 .style("fill", function(d) {
                     return color(d);
                 })
-                .style("opacity", 1)
-                .on("click",function(d) { 
-                    console.log("clicked");
-                    updateByMonth(mainData); 
-                });
+                .style("opacity", 1);
 
             test.append("text")
                 .attr("x", plot.width - 24)
@@ -917,7 +907,7 @@ function draw (data) {
             .attr("dy", ".35em")
             .style("opacity", "1")
             .style("text-anchor", "middle")
-            .text("Group by Battalion")
+            .text("Group by Month")
             .on("click",function(d) { 
                 console.log("clicked");
                 updateByMonth(mainData); 
