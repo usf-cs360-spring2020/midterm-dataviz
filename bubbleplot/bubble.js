@@ -234,9 +234,9 @@ function draw_bubbleplot(data, x_start, y_start, allBatallions, allStations, all
 }
 
 function showLabel(d, callType) {
-  var coords = [d3.event.pageX, d3.event.pageY];
-  var top = coords[1] - 170,
-    left = coords[0] - 185;
+  var coords = [d3.event.clientX, d3.event.clientY];
+  var top = coords[1] - d3.select("#d3ImplementationSection").node().getBoundingClientRect().y - 30,
+    left = coords[0] - d3.select("#d3ImplementationSection").node().getBoundingClientRect().x - 15;
 
   stationLookUp().then(function(data) {
     let out = new Map();
