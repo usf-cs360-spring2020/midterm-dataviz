@@ -36,10 +36,11 @@ div {
     width: auto;
     height: auto;
     padding: 8px;
-    background: #ddd;
+    background: whitesmoke;
     pointer-events: none;
-    border: 1px solid #eee;
+    border: 3px solid;
     border-radius: 10px;
+    /* color: cornflowerblue; */
   }
 
   #legend {
@@ -47,6 +48,15 @@ div {
       width: 300px;
       height: 400px;
   }
+
+  #updateButton {
+    position: relative;
+    left: 50px;
+    width: 120px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+}
 
   .tick line{
     opacity: 0.2;

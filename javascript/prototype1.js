@@ -35,6 +35,8 @@ d3.csv(csv, convert).then(draw);
 function draw (data) {
     console.log("data", data);
 
+    var mainData = data;
+
     var groupedByMonth = d3.nest()
         .key (function (d) {
             return d.month;
@@ -99,9 +101,6 @@ function draw (data) {
             .domain([countMin, countMax])
             .rangeRound([plot.height, 0])
             .nice();
-
-        var z = d3.scaleOrdinal()
-                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
         let plots = svg.append("g")
             .attr("id", "plots");
@@ -188,14 +187,16 @@ function draw (data) {
                 d3.selectAll("#D3Prototype1 rect")
                     .filter(e => (d.battalion !== e.battalion))
                     .transition()
+                    .duration(1000)
                     .style("fill-opacity", "0.2");        
                     
                 tooltip.transition()		
                     .duration(1000)		
                     .style("opacity", .8)
+                    .style("border-color", color(d.battalion))
                 tooltip
-                    .style("left", (d3.event.pageX - 90) + "px")
-                    .style("top", (d3.event.pageY - 90) + "px")
+                    .style("left", (d3.event.pageX - 70) + "px")
+                    .style("top", (d3.event.pageY - 110) + "px")
                     .style("display", "inline-block")
                 
                 let rows = tooltip.append("table")
@@ -205,12 +206,20 @@ function draw (data) {
                     .enter()
                     .append("tr");
 
-                console.log("Object.keys(d):",Object.keys(d))
-                console.log("incident: ", d.incident)
-
                 rows.append("th").text(key => key);
                 rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
 
+            })
+            .on("mousemove", function (d) {  
+            tooltip.transition()		
+                .duration(500)		
+                .style("opacity", .8)
+                .style("border-color", color(d.battalion))
+            tooltip
+                .style("left", (d3.event.pageX - 70) + "px")
+                .style("top", (d3.event.pageY - 110) + "px")
+                .style("display", "inline-block")
+            
             })
             .on("mouseout", function(d, i){
                 tooltip
@@ -220,7 +229,7 @@ function draw (data) {
 
                 d3.selectAll("table").remove();
                     
-                d3.selectAll("#D3Prototype1 rect").transition()
+                d3.selectAll("#D3Prototype1 rect").transition().duration(1000)
                     .style("fill-opacity", "1");
             });
 
@@ -246,7 +255,11 @@ function draw (data) {
             .style("fill", function(d) {
                 return color(d);
             })
-            .style("opacity", 1);
+            .style("opacity", 1)
+            .on("click",function(d) { 
+                console.log("clicked");
+                updateByMonth(mainData); 
+            });
 
         test.append("text")
             .attr("x", plot.width - 24)
@@ -258,7 +271,8 @@ function draw (data) {
               return d;
             });
 
-        test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
+        test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
+            .style("opacity","1");
     
         legend.append("text")
             .attr("class", "label")
@@ -269,6 +283,646 @@ function draw (data) {
             .style("opacity", "1")
             .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1")
             .text("Battalion")
+
+        var button = d3.select('body').select("#updateButton");
+
+        button.append("rect")
+            .attr("class", "clickButton")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 200)
+            .attr("height", 30)
+            .style("fill", "powderblue")
+            .style("opacity", 0.4)
+            .on("click",function(d) { 
+                console.log("clicked");
+                updateByMonth(mainData); 
+            });
+
+        button.append("text")
+            .attr("id", "clicked")
+            .attr("font-size", 12)
+            .attr("x", 60)
+            .attr("y", 10)
+            .attr("dy", ".35em")
+            .style("opacity", "1")
+            .style("text-anchor", "middle")
+            .text("Group by Month")
+            .on("click",function(d) { 
+                console.log("clicked");
+                updateByMonth(mainData); 
+            });
+
+        function updateByMonth (d) {
+
+            d3.selectAll("rect").remove();
+            d3.selectAll(".legend").remove();
+            d3.selectAll("g").remove();
+            d3.select("#updateButton").selectAll("text").remove();
+            d3.select("#updateButton").selectAll("rect").remove();
+
+            svg = d3.select('body').select('#D3Prototype1')
+                .attr('width', svg_width)
+                .attr('height', svg_height);
+
+            tooltip = d3.select("body").append("div")
+                .attr("id", "details")
+                .attr("class", "toolTip")
+                .style("opacity", 0);
+
+            g = svg.append('g')
+                .attr('id', 'plot')
+                .attr('transform', translate(plot.x, plot.y));
+
+            console.log("d", d)
+            var groupedByBattalion = d3.nest()
+                .key (function (d) {
+                    return d.battalion;
+                })
+                .key (function (d) {
+                    return d.month;
+                })
+                .rollup (function (v) {
+                    return d3.sum(v, function (d) {
+                        return d.incident;
+                    })
+                })
+                .entries(d)
+                .map(function(group) {
+                    return {
+                    "month": group.key,
+                    "values": group.values.map(function(subgroup) {
+                        return {
+                        "battalion": subgroup.key,
+                        "incident": subgroup.value,
+                        "month": dateFormatter(group.key),
+                        "year": "2019"
+                        }
+                    })
+                    }
+                });
+
+            console.log("groupedByBattalion", groupedByBattalion);
+
+            data = groupedByBattalion;
+
+            categories = data[0].values.map(value => value.battalion);
+            console.log("categories:", categories);
+
+            months = data.map(function(d) {
+                return d.month;
+            });
+            console.log("months:", months);
+
+            countMin = 0;
+            countMax = d3.max(data, function(c) {
+                return d3.max(c.values, function(d) {
+                    return d.incident;
+                });
+            });
+
+            if (isNaN(countMax)) {
+                countMax = 0;
+            }
+    
+            console.log("count bounds:", [countMin, countMax]);
+
+            x0 = d3.scaleBand()
+                .domain(months)
+                .rangeRound([0, plot.width])
+                .paddingInner(0.1);
+
+            x1 = d3.scaleBand()
+                .domain(categories)
+                .range([0, x0.bandwidth()])
+                .padding(0.05);
+
+            y = d3.scaleLinear()
+                .domain([countMin, countMax])
+                .rangeRound([plot.height, 0])
+                .nice();
+
+            plots = svg.append("g")
+                .attr("id", "plots");
+            plots.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            xAxis = d3.axisBottom(x0);
+            yAxis = d3.axisLeft(y);
+
+            plots.append("text")
+            .style("text-anchor", "end")
+            .attr("y", 0)
+            .attr("dy", "-2.5em")
+            .attr('transform', 'rotate(-90)')
+            .text("Number of Incidents");
+
+            plots.append("text")
+            .attr("x", plot.width / 2)
+            .attr("y", 490)
+            .attr("text-anchor", "middle")
+            .text("Months (2019)");
+
+            plots.append("g")
+            .attr("class", "grid")
+            .attr("transform", "translate(0," + plot.height + ")");
+
+            // xAxis.tickFormat(dateFormatter);
+            yAxis.tickFormat(numFormatter);
+
+            xGroup = plots.append("g")
+                .attr("id", "x-axis")
+                .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+            xGroup.call(xAxis.tickSize(-plot.height, 200, 0));
+            xGroup.attr("transform", "translate(0," + plot.height + ")");
+
+            yGroup = plots.append("g")
+                .attr("id", "y-axis")
+                .attr("x", 2)
+                .attr("y", y(y.ticks().pop()) + 0.5)
+                .attr("dy", "0.32em")
+                .attr("fill", "#000")
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "start")
+                .text("No. of Incidents")
+                .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+
+            yGroup.call(yAxis.tickSize(-plot.width, 200, 0));
+
+            color = d3.scaleOrdinal(d3.schemeTableau10);
+
+            slice = plots.selectAll(".slice")
+                .data(data)
+                .enter().append("g")
+                .attr("class", "g")
+                .attr("transform", function(d) {
+                    return "translate(" + x0(d.month) + ",0)";
+                });
+
+            console.log("Data final: ", data);
+
+            bars = slice.selectAll("rect")
+                .data(function(d) {
+                    return d.values;
+                });
+
+            bars.enter().append("rect")
+                .attr("class", "bar")
+                .attr("width", x1.bandwidth())
+                .attr("x", function(d) {
+                    return x1(d.battalion);
+                })
+                .style("fill", function(d) {
+                    return color(d.battalion);
+                })
+                .style("opacity", 1)
+                .style("stroke", "white")
+                .attr("y", function(d) {
+                    return y(d.incident);
+                })
+                .attr("height", function(d) {
+                    return plot.height - y(d.incident);
+                })
+                .on("mouseover", function(d) {
+    
+                    d3.selectAll("#D3Prototype1 rect")
+                        .filter(e => (d.battalion !== e.battalion))
+                        .transition()
+                        .duration(1000)
+                        .style("fill-opacity", "0.2");        
+                        
+                    tooltip.transition()		
+                        .duration(1000)		
+                        .style("opacity", .8)
+                        .style("border-color", color(d.battalion))
+                    tooltip
+                        .style("left", (d3.event.pageX - 70) + "px")
+                        .style("top", (d3.event.pageY - 110) + "px")
+                        .style("display", "inline-block")
+                    
+                    let rows = tooltip.append("table")
+                        .attr("id", "tableToolTip")
+                        .selectAll("tr")
+                        .data(Object.keys(d))
+                        .enter()
+                        .append("tr");
+    
+                    rows.append("th").text(key => key);
+                    rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
+    
+                })
+                .on("mousemove", function (d) {  
+                tooltip.transition()		
+                    .duration(500)		
+                    .style("opacity", .8)
+                    .style("border-color", color(d.battalion))
+                tooltip
+                    .style("left", (d3.event.pageX - 70) + "px")
+                    .style("top", (d3.event.pageY - 110) + "px")
+                    .style("display", "inline-block")
+                
+                })
+                .on("mouseout", function(d, i){
+                    tooltip
+                        .transition()		
+                        .duration(500)		
+                        .style("opacity", 0);
+    
+                    d3.selectAll("table").remove();
+                        
+                    d3.selectAll("#D3Prototype1 rect").transition().duration(1000)
+                        .style("fill-opacity", "1");
+                });
+
+            legend = d3.select('body').select('#legend');
+
+            test = legend.selectAll(".legend")
+                .data(data[0].values.map(function(d) {
+                    return d.battalion;
+                }))
+                .enter().append("g")
+                .attr("class", "legend")
+                .style("opacity", "0")
+                .attr("transform", function(d, i) {
+                    return "translate(-800," + i*25 + ")";
+                });
+
+            test.append("rect")
+                .attr("x", plot.width - 18)
+                .attr("y", 24)
+                .attr("width", 10)
+                .attr("height", 10)
+                .style("fill", function(d) {
+                    return color(d);
+                })
+                .style("opacity", 1)
+                .on("click",function(d) { 
+                    console.log("clicked");
+                    updateByBattalion(mainData); 
+                });
+
+            test.append("text")
+                .attr("x", plot.width - 24)
+                .attr("y", 30)
+                .attr("font-size", 12)
+                .attr("dy", ".35em")
+                .style("text-anchor", "end")
+                .text(function(d) {
+                  return dateFormatter(d);
+                });
+
+            test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+
+            d3.select("#legend").select("text").remove();
+
+            legend.append("text")
+                .attr("class", "label")
+                .attr("font-size", 6)
+                .attr("x", 30)
+                .attr("y", "7")
+                .attr("dy", ".35em")
+                .style("opacity", "1")
+                .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
+                .text("Month")
+
+
+            button = d3.select('body').select("#updateButton");
+
+            button.append("rect")
+                .attr("class", "clickButton")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", 200)
+                .attr("height", 30)
+                .style("fill", "powderblue")
+                .style("opacity", 0.4)
+                .on("click",function(d) { 
+                    console.log("clicked");
+                    updateByBattalion(mainData); 
+                });
+    
+            button.append("text")
+                .attr("id", "clicked")
+                .attr("font-size", 12)
+                .attr("x", 60)
+                .attr("y", 10)
+                .attr("dy", ".35em")
+                .style("opacity", "1")
+                .style("text-anchor", "middle")
+                .text("Group by Battalion")
+                .on("click",function(d) { 
+                    console.log("clicked");
+                    updateByBattalion(mainData); 
+                });
+
+        }
+
+        function updateByBattalion (d) {
+
+            d3.selectAll("rect").remove();
+            d3.selectAll(".legend").remove();
+            d3.selectAll("g").remove();
+            d3.select("#updateButton").selectAll("text").remove();
+            d3.select("#updateButton").selectAll("rect").remove();
+
+            svg = d3.select('body').select('#D3Prototype1')
+                .attr('width', svg_width)
+                .attr('height', svg_height);
+
+            tooltip = d3.select("body").append("div")
+                .attr("id", "details")
+                .attr("class", "toolTip")
+                .style("opacity", 0);
+
+            g = svg.append('g')
+                .attr('id', 'plot')
+                .attr('transform', translate(plot.x, plot.y));
+
+            console.log("d", d)
+            var groupedByMonth = d3.nest()
+                .key (function (d) {
+                    return d.month;
+                })
+                .key (function (d) {
+                    return d.battalion;
+                })
+                .rollup (function (v) {
+                    return d3.sum(v, function (d) {
+                        return d.incident;
+                    })
+                })
+                .entries(d)
+                .map(function(group) {
+                    return {
+                    "month": group.key,
+                    "values": group.values.map(function(subgroup) {
+                        return {
+                        "battalion": subgroup.key,
+                        "incident": subgroup.value,
+                        "month": dateFormatter(group.key),
+                        "year": "2019"
+                        }
+                    })
+                    }
+                });
+
+            console.log("groupedByBattalion", groupedByMonth);
+
+            data = groupedByMonth;
+
+            categories = data[0].values.map(value => value.battalion);
+            console.log("categories:", categories);
+
+            months = data.map(function(d) {
+                return d.month;
+            });
+            console.log("months:", months);
+
+            countMin = 0;
+            countMax = d3.max(data, function(c) {
+                return d3.max(c.values, function(d) {
+                    return d.incident;
+                });
+            });
+
+            if (isNaN(countMax)) {
+                countMax = 0;
+            }
+    
+            console.log("count bounds:", [countMin, countMax]);
+
+            x0 = d3.scaleBand()
+                .domain(months)
+                .rangeRound([0, plot.width])
+                .paddingInner(0.1);
+
+            x1 = d3.scaleBand()
+                .domain(categories)
+                .range([0, x0.bandwidth()])
+                .padding(0.05);
+
+            y = d3.scaleLinear()
+                .domain([countMin, countMax])
+                .rangeRound([plot.height, 0])
+                .nice();
+
+            plots = svg.append("g")
+                .attr("id", "plots");
+            plots.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            xAxis = d3.axisBottom(x0);
+            yAxis = d3.axisLeft(y);
+
+            plots.append("text")
+            .style("text-anchor", "end")
+            .attr("y", 0)
+            .attr("dy", "-2.5em")
+            .attr('transform', 'rotate(-90)')
+            .text("Number of Incidents");
+
+            plots.append("text")
+            .attr("x", plot.width / 2)
+            .attr("y", 490)
+            .attr("text-anchor", "middle")
+            .text("Months (2019)");
+
+            plots.append("g")
+            .attr("class", "grid")
+            .attr("transform", "translate(0," + plot.height + ")");
+
+            xAxis.tickFormat(dateFormatter);
+            yAxis.tickFormat(numFormatter);
+
+            xGroup = plots.append("g")
+                .attr("id", "x-axis")
+                .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+            xGroup.call(xAxis.tickSize(-plot.height, 200, 0));
+            xGroup.attr("transform", "translate(0," + plot.height + ")");
+
+            yGroup = plots.append("g")
+                .attr("id", "y-axis")
+                .attr("x", 2)
+                .attr("y", y(y.ticks().pop()) + 0.5)
+                .attr("dy", "0.32em")
+                .attr("fill", "#000")
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "start")
+                .text("No. of Incidents")
+                .transition().duration(1000).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+
+            yGroup.call(yAxis.tickSize(-plot.width, 200, 0));
+
+            color = d3.scaleOrdinal(d3.schemeTableau10);
+
+            slice = plots.selectAll(".slice")
+                .data(data)
+                .enter().append("g")
+                .attr("class", "g")
+                .attr("transform", function(d) {
+                    return "translate(" + x0(d.month) + ",0)";
+                });
+
+            console.log("Data final: ", data);
+
+            bars = slice.selectAll("rect")
+                .data(function(d) {
+                    return d.values;
+                });
+
+            bars.enter().append("rect")
+                .attr("class", "bar")
+                .attr("width", x1.bandwidth())
+                .attr("x", function(d) {
+                    return x1(d.battalion);
+                })
+                .style("fill", function(d) {
+                    return color(d.battalion);
+                })
+                .style("opacity", 1)
+                .style("stroke", "white")
+                .attr("y", function(d) {
+                    return y(d.incident);
+                })
+                .attr("height", function(d) {
+                    return plot.height - y(d.incident);
+                })
+                .on("mouseover", function(d) {
+    
+                    d3.selectAll("#D3Prototype1 rect")
+                        .filter(e => (d.battalion !== e.battalion))
+                        .transition()
+                        .duration(1000)
+                        .style("fill-opacity", "0.2");        
+                        
+                    tooltip.transition()		
+                        .duration(1000)		
+                        .style("opacity", .8)
+                        .style("border-color", color(d.battalion))
+                    tooltip
+                        .style("left", (d3.event.pageX - 70) + "px")
+                        .style("top", (d3.event.pageY - 110) + "px")
+                        .style("display", "inline-block")
+                    
+                    let rows = tooltip.append("table")
+                        .attr("id", "tableToolTip")
+                        .selectAll("tr")
+                        .data(Object.keys(d))
+                        .enter()
+                        .append("tr");
+    
+                    rows.append("th").text(key => key);
+                    rows.append("td").text(key => "\u00A0\u00A0" + d[key]);
+    
+                })
+                .on("mousemove", function (d) {  
+                tooltip.transition()		
+                    .duration(500)		
+                    .style("opacity", .8)
+                    .style("border-color", color(d.battalion))
+                tooltip
+                    .style("left", (d3.event.pageX - 70) + "px")
+                    .style("top", (d3.event.pageY - 110) + "px")
+                    .style("display", "inline-block")
+                
+                })
+                .on("mouseout", function(d, i){
+                    tooltip
+                        .transition()		
+                        .duration(500)		
+                        .style("opacity", 0);
+    
+                    d3.selectAll("table").remove();
+                        
+                    d3.selectAll("#D3Prototype1 rect").transition().duration(1000)
+                        .style("fill-opacity", "1");
+                });
+
+            legend = d3.select('body').select('#legend');
+
+            test = legend.selectAll(".legend")
+                .data(data[0].values.map(function(d) {
+                    return d.battalion;
+                }))
+                .enter().append("g")
+                .attr("class", "legend")
+                .style("opacity", "0")
+                .attr("transform", function(d, i) {
+                    return "translate(-800," + i*25 + ")";
+                });
+
+            test.append("rect")
+                .attr("x", plot.width - 18)
+                .attr("y", 24)
+                .attr("width", 10)
+                .attr("height", 10)
+                .style("fill", function(d) {
+                    return color(d);
+                })
+                .style("opacity", 1)
+                .on("click",function(d) { 
+                    console.log("clicked");
+                    updateByMonth(mainData); 
+                });
+
+            test.append("text")
+                .attr("x", plot.width - 24)
+                .attr("y", 30)
+                .attr("font-size", 12)
+                .attr("dy", ".35em")
+                .style("text-anchor", "end")
+                .text(function(d) {
+                  return d;
+                });
+
+            test.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
+                .style("opacity","1");
+
+            d3.select("#legend").select("text").remove();
+
+            legend.append("text")
+                .attr("class", "label")
+                .attr("font-size", 6)
+                .attr("x", 30)
+                .attr("y", "7")
+                .attr("dy", ".35em")
+                .style("opacity", "1")
+                .transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; })
+                .text("Battalion")
+
+
+                button = d3.select('body').select("#updateButton");
+
+        button.append("rect")
+            .attr("class", "clickButton")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 200)
+            .attr("height", 30)
+            .style("fill", "powderblue")
+            .style("opacity", 0.4)
+            .on("click",function(d) { 
+                console.log("clicked");
+                updateByMonth(mainData); 
+            });
+
+        button.append("text")
+            .attr("id", "clicked")
+            .attr("font-size", 12)
+            .attr("x", 60)
+            .attr("y", 10)
+            .attr("dy", ".35em")
+            .style("opacity", "1")
+            .style("text-anchor", "middle")
+            .text("Group by Battalion")
+            .on("click",function(d) { 
+                console.log("clicked");
+                updateByMonth(mainData); 
+            });
+        }
 };
 
 let parseColumnName = d3.timeParse('%mm%dd%yyyy');
