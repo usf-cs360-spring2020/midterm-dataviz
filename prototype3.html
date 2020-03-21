@@ -80,7 +80,7 @@
 
               <a class="navbar-item is-active" href="prototype3.html">
                 <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                <span>Prototype 3</span>
+                <span>HeatMap</span>
               </a>
             </div>
           </div>
@@ -111,7 +111,7 @@
         <div class="content">
           <h1 id="home" class="title">
             <!-- TODO: Change page title -->
-            Prototype 3 - Average Response Time per Neighbourhood in Minutes
+            HeatMap - Average Response Time per Neighbourhood in Minutes
           </h1>
 
           <h5>Zhenzhen Wang</h5>
@@ -144,18 +144,18 @@
 
           <h4>Conclusion based on the prototype</h4>
           <p>
-            The pie chart prototype shows number of incidents in different neighborhoods of San Francisco,
-            and the response time from fire station for citizens having different emergency calls.
+            The pie chart prototype shows number of incidents in different neighborhoods of San Fcxrancisco,
+            and the response time from fire stations for citizens having different emergency calls.
             From the prototype above, we can see that the Tenderloin, South of Market and Mission  are the 
-            neighborhoods having the most number of incidents with all having good response time (below 10 minutes). 
+            neighborhoods having the most number of incidents with all having the good response time (below 10 minutes). 
             It also shows that the fire station response time for the average case is around 10 minutes. 
             The neighbourhood with most number of incidents is Tendelorian (45,491 cases) with an average 
             response time of 8.8 min.
           </p>
           <p> 
             The heatmap prototype shows average response time per month of 
-            Station "36" for each Neighbourhood which lies under Batallion 
-            "B02". From the prototype above, we can say that, the response 
+            Station "36" for each Neighbourhood which lies under batallion 
+            "B02". From the prototype above, we can say that; the response 
             time for the Financial District in the month of January is above
              the average response time. This is also the case for Potrero 
              Hill for the month of April, May, June, July, September and 
@@ -204,16 +204,23 @@
             <tbody>
 
                 <tr>
-                    <td><font color="green">Color scheme should not be diverging because the data it is encoding does not have negative values.</font> I like how the heat map shows some months where the response time is worse than most others and makes that discrepancy clear.
+                    <td><font color="green">The color scheme should not be diverging because the data it is encoding does not have negative values.</font> I like how the heat map shows some months where the response time is worse than most others and makes that discrepancy clear.
                       <font color="green">It is also hard to tell which label in the pie chart refers to which slice of the pie.</font></td>
                   
                 </tr>
 
                 <tr>
                     <td>
-                      The number of incidents also can be reliant on population for the neighborhood that battalion serves, so maybe a ratio would be better for lie factor rather than raw count. <font color="green">The labeling for the pie chart is a bit difficult to parse for some of the smaller slices, if that is changed during interactivity to show details as the user hovers over a slice it would help with interpretation.</font> Otherwise, the two charts seem good together and the interactivity seems like it will provide good information.
-                      /td>
-                    
+                      The number of incidents also can be reliant on population for the neighborhood
+                       that the battalion serves, so maybe a ratio would be better for lie factor
+                        rather than raw count. <font color="green">The labeling for 
+                          the pie chart is a bit difficult to parse for some of the 
+                          smaller slices, if that is changed during interactivity to show 
+                          details as the user hovers over a slice it would help with 
+                          interpretation.</font> Otherwise, the two charts seem good together,
+                           and the interactivity seems like it will provide good information.
+                      
+                    </td>
                 </tr>
 
             </tbody>
@@ -226,10 +233,10 @@
               <tbody>
   
                   <tr>
-                      <td>The scores I got from feedback are pretty good except color encodeing.
+                      <td>The scores I got from feedback are pretty good except color encoding.
                          After reading Feedback comments from Classmates, 
                          I think it is unnessary for me to have pie char. But 
-                         Classmates like my heapmap a lot. Because it not just look nice but also connect with my 
+                         Classmates like my heapmap a lot. Because it does not just look nice but also connect with my 
                          another two parters' analysing. I changed the color of the heatmap.
 
                       </td>
@@ -260,7 +267,13 @@
         <h4>Data encoding</h4>
           <p>
             Average of Time to Arrival is broken down by Watch Date Month vs.
-             Neighborhooods - Analysis Boundaries.  Color shows average of Time to Arrival.  The marks are labeled by average of Time to Arrival. The data is filtered on Call Type Group, Exclusions (On Scene DtTm,Received DtTm), Station Area and Watch Date Year. The Call Type Group filter keeps Alarm, Fire, Non Life-threatening and Potentially Life-Threatening. The Exclusions (On Scene DtTm,Received DtTm) filter keeps 300,288 members. The Station Area filter keeps 36. The Watch Date Year filter keeps 2019.            
+             Neighborhoods - Analysis Boundaries.  Color shows average of Time to Arrival. 
+              The marks are labeled by average of Time to Arrival. The data is filtered on Call
+               Type Group, Exclusions (On Scene DtTm,Received DtTm), Station Area and Watch Date 
+               Year. The Call Type Group filter keeps Alarm, Fire, Non Life-threatening and 
+               Potentially Life-Threatening. The Exclusions (On Scene DtTm,Received DtTm) filter 
+               keeps 300,288 members. The Station Area filter keeps 36. The Watch Date Year filter
+                keeps 2019.            
           </p>
           <p>
               Only neighborhoods that had at least one incident every month from station 36 are included.
@@ -280,8 +293,11 @@
         <p>
           <ul>
             <li>Tenderloin, the neighborhood with the most number of incidents, has an average response time of 8.5 minutes.</li>
-            <li>Non-life threatening calls take longer to respond to than other types of calls, which makes sense because they have lower priority.</li>
-            <li>For this station, calls from the Mission neighborhood take the longest to respond to on average, and this is consistent across all months of the year. Perhaps the department should investigate ways to improve response time here.</li>
+            <li>Non-life threatening calls take longer to respond to than other types of calls,
+               which makes sense because they have lower priority.</li>
+            <li>For this station, calls from the Mission neighborhood take the longest to respond
+               to on average, and this is consistent across all months of the year. Perhaps the
+                department should investigate ways to improve the response time here.</li>
           </ul>
         </p>  
         
