@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Dank Mono Regular';
+  src: url('font/DankMono-Regular.ttf');
+}
+
+.tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background: #ddd;
+    pointer-events: none;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  /* color: cornflowerblue; */
+}
