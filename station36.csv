@@ -1,0 +1,222 @@
+calltype	month	hood	avgtime	count
+Potentially Life-Threatening	December	Hayes Valley	8.224747475	132
+Non Life-threatening	December	Hayes Valley	12.699761905	70
+Fire	December	Hayes Valley	8.450980392	17
+Alarm	December	Hayes Valley	6.31	90
+Potentially Life-Threatening	November	Hayes Valley	7.761111111	150
+Non Life-threatening	November	Hayes Valley	10.349751244	67
+Fire	November	Hayes Valley	5.279166667	4
+Alarm	November	Hayes Valley	4.975	30
+Potentially Life-Threatening	October	Hayes Valley	8.478362573	171
+Non Life-threatening	October	Hayes Valley	12.866919192	66
+Fire	October	Hayes Valley	6.203703704	9
+Alarm	October	Hayes Valley	5.007677903	89
+Potentially Life-Threatening	September	Hayes Valley	6.893730887	109
+Non Life-threatening	September	Hayes Valley	13.883333333	64
+Fire	September	Hayes Valley	4.166666667	1
+Alarm	September	Hayes Valley	6.158239700	89
+Potentially Life-Threatening	August	Hayes Valley	8.040809969	107
+Non Life-threatening	August	Hayes Valley	10.5375	52
+Fire	August	Hayes Valley	9.747916667	8
+Alarm	August	Hayes Valley	6.295289855	46
+Potentially Life-Threatening	July	Hayes Valley	8.326	125
+Non Life-threatening	July	Hayes Valley	10.889090909	55
+Fire	July	Hayes Valley	4.816666667	3
+Alarm	July	Hayes Valley	6.087061404	76
+Potentially Life-Threatening	June	Hayes Valley	8.733333333	153
+Non Life-threatening	June	Hayes Valley	12.151648352	91
+Fire	June	Hayes Valley	4.803333333	5
+Alarm	June	Hayes Valley	6.208333333	62
+Potentially Life-Threatening	May	Hayes Valley	7.802853881	146
+Non Life-threatening	May	Hayes Valley	10.500980392	68
+Fire	May	Hayes Valley	4.416666667	2
+Alarm	May	Hayes Valley	5.453954802	59
+Potentially Life-Threatening	April	Hayes Valley	8.2875	140
+Non Life-threatening	April	Hayes Valley	11.449074074	72
+Fire	April	Hayes Valley	6.55	3
+Alarm	April	Hayes Valley	6.760126582	79
+Potentially Life-Threatening	March	Hayes Valley	7.740220386	121
+Non Life-threatening	March	Hayes Valley	12.081012658	79
+Fire	March	Hayes Valley	6.024074074	9
+Alarm	March	Hayes Valley	6.560483871	62
+Potentially Life-Threatening	February	Hayes Valley	8.257692308	117
+Non Life-threatening	February	Hayes Valley	12.125897436	65
+Fire	February	Hayes Valley	5.783333333	2
+Alarm	February	Hayes Valley	6.104861111	96
+Potentially Life-Threatening	January	Hayes Valley	7.139805825	103
+Non Life-threatening	January	Hayes Valley	10.301458333	80
+Fire	January	Hayes Valley	8.361111111	3
+Alarm	January	Hayes Valley	5.330508475	59
+Potentially Life-Threatening	December	Mission	10.146057348	186
+Non Life-threatening	December	Mission	13.797938144	97
+Fire	December	Mission	4.838888889	3
+Alarm	December	Mission	7.132936508	42
+Potentially Life-Threatening	November	Mission	8.999629630	180
+Non Life-threatening	November	Mission	13.143287037	72
+Fire	November	Mission	5.255555556	3
+Alarm	November	Mission	6.010144928	69
+Potentially Life-Threatening	October	Mission	8.149747475	198
+Non Life-threatening	October	Mission	14.821505376	93
+Fire	October	Mission	7.342857143	7
+Alarm	October	Mission	5.148484848	11
+Potentially Life-Threatening	September	Mission	8.248148148	189
+Non Life-threatening	September	Mission	17.445532646	97
+Fire	September	Mission	9.925	4
+Alarm	September	Mission	6.152604167	32
+Potentially Life-Threatening	August	Mission	7.603823529	170
+Non Life-threatening	August	Mission	14.898765432	81
+Fire	August	Mission	6.604166667	4
+Alarm	August	Mission	7.411818182	55
+Potentially Life-Threatening	July	Mission	8.530092593	144
+Non Life-threatening	July	Mission	13.359956710	77
+Fire	July	Mission	6.046666667	5
+Alarm	July	Mission	6.457175926	72
+Potentially Life-Threatening	June	Mission	8.606625259	161
+Non Life-threatening	June	Mission	13.179166667	60
+Fire	June	Mission	5.027777778	3
+Alarm	June	Mission	7.414506173	54
+Potentially Life-Threatening	May	Mission	7.7	109
+Non Life-threatening	May	Mission	15.183966245	79
+Fire	May	Mission	7.027777778	3
+Alarm	May	Mission	5.959876543	54
+Potentially Life-Threatening	April	Mission	8.333900227	147
+Non Life-threatening	April	Mission	13.431220657	71
+Fire	April	Mission	6.3625	4
+Alarm	April	Mission	6.954629630	54
+Potentially Life-Threatening	March	Mission	8.002624672	127
+Non Life-threatening	March	Mission	13.636041667	80
+Fire	March	Mission	6.76875	8
+Alarm	March	Mission	5.480630631	37
+Potentially Life-Threatening	February	Mission	8.578195489	133
+Non Life-threatening	February	Mission	13.847282609	92
+Fire	February	Mission	6.1	1
+Alarm	February	Mission	6.703431373	34
+Potentially Life-Threatening	January	Mission	8.597350993	151
+Non Life-threatening	January	Mission	13.879891304	92
+Fire	January	Mission	10.391666667	4
+Alarm	January	Mission	6.025666667	50
+Potentially Life-Threatening	December	South of Market	8.153994490	242
+Non Life-threatening	December	South of Market	13.461011905	112
+Fire	December	South of Market	4.466666667	2
+Alarm	December	South of Market	5.870572917	64
+Potentially Life-Threatening	November	South of Market	7.897302905	241
+Non Life-threatening	November	South of Market	12.828672316	118
+Fire	November	South of Market	6.820833333	4
+Alarm	November	South of Market	7.010457516	51
+Potentially Life-Threatening	October	South of Market	8.113108614	267
+Non Life-threatening	October	South of Market	13.643771044	99
+Fire	October	South of Market	6.205128205	13
+Alarm	October	South of Market	6.133660131	51
+Potentially Life-Threatening	September	South of Market	8.485824437	281
+Non Life-threatening	September	South of Market	13.890235690	99
+Fire	September	South of Market	7.033333333	1
+Alarm	September	South of Market	7.311742424	44
+Potentially Life-Threatening	August	South of Market	7.922370089	263
+Non Life-threatening	August	South of Market	11.849586777	121
+Fire	August	South of Market	4.46	5
+Alarm	August	South of Market	5.754166667	52
+Potentially Life-Threatening	July	South of Market	8.057079646	226
+Non Life-threatening	July	South of Market	12.105504587	109
+Fire	July	South of Market	6.983333333	2
+Alarm	July	South of Market	6.865	30
+Potentially Life-Threatening	June	South of Market	7.915710872	279
+Non Life-threatening	June	South of Market	12.241025641	117
+Fire	June	South of Market	7.719444444	6
+Alarm	June	South of Market	6.130729167	32
+Potentially Life-Threatening	May	South of Market	7.742473118	248
+Non Life-threatening	May	South of Market	12.863172043	124
+Fire	May	South of Market	2.325	2
+Alarm	May	South of Market	6.215891473	43
+Potentially Life-Threatening	April	South of Market	7.495796460	226
+Non Life-threatening	April	South of Market	11.908493590	104
+Alarm	April	South of Market	5.899285714	70
+Potentially Life-Threatening	March	South of Market	7.733476395	233
+Non Life-threatening	March	South of Market	12.617986799	101
+Fire	March	South of Market	6.441666667	2
+Alarm	March	South of Market	5.938484848	55
+Potentially Life-Threatening	February	South of Market	8.252036199	221
+Non Life-threatening	February	South of Market	13.087121212	110
+Fire	February	South of Market	7.2	1
+Alarm	February	South of Market	5.844	50
+Potentially Life-Threatening	January	South of Market	7.875	200
+Non Life-threatening	January	South of Market	10.927515723	106
+Fire	January	South of Market	8.941666667	2
+Alarm	January	South of Market	5.281446541	53
+Potentially Life-Threatening	December	Tenderloin	8.089096045	295
+Non Life-threatening	December	Tenderloin	13.161885246	122
+Fire	December	Tenderloin	4.9	2
+Alarm	December	Tenderloin	5.682564103	65
+Potentially Life-Threatening	November	Tenderloin	8.007652399	257
+Non Life-threatening	November	Tenderloin	11.802614379	102
+Fire	November	Tenderloin	6.991666667	2
+Alarm	November	Tenderloin	5.363703704	45
+Potentially Life-Threatening	October	Tenderloin	7.587430786	301
+Non Life-threatening	October	Tenderloin	12.949814815	90
+Fire	October	Tenderloin	6.863888889	6
+Alarm	October	Tenderloin	5.658805031	53
+Potentially Life-Threatening	September	Tenderloin	6.976117318	358
+Non Life-threatening	September	Tenderloin	12.710793651	105
+Fire	September	Tenderloin	7.433333333	4
+Alarm	September	Tenderloin	6.502291667	80
+Potentially Life-Threatening	August	Tenderloin	7.171486643	287
+Non Life-threatening	August	Tenderloin	12.199061033	142
+Fire	August	Tenderloin	5.791666667	2
+Alarm	August	Tenderloin	6.057070707	66
+Potentially Life-Threatening	July	Tenderloin	7.131443995	247
+Non Life-threatening	July	Tenderloin	11.909523810	91
+Fire	July	Tenderloin	5.854166667	4
+Alarm	July	Tenderloin	5.373655914	62
+Potentially Life-Threatening	June	Tenderloin	7.715005727	291
+Non Life-threatening	June	Tenderloin	13.854104478	134
+Fire	June	Tenderloin	6.683333333	16
+Alarm	June	Tenderloin	6.722008547	78
+Potentially Life-Threatening	May	Tenderloin	7.386225895	242
+Non Life-threatening	May	Tenderloin	11.411111111	114
+Fire	May	Tenderloin	3.625	4
+Alarm	May	Tenderloin	5.644262295	61
+Potentially Life-Threatening	April	Tenderloin	6.821496599	245
+Non Life-threatening	April	Tenderloin	11.560080645	124
+Fire	April	Tenderloin	5.920833333	4
+Alarm	April	Tenderloin	6.7135	100
+Potentially Life-Threatening	March	Tenderloin	7.473655914	248
+Non Life-threatening	March	Tenderloin	11.544814815	135
+Fire	March	Tenderloin	4.483333333	1
+Alarm	March	Tenderloin	6.905847953	57
+Potentially Life-Threatening	February	Tenderloin	7.555896226	212
+Non Life-threatening	February	Tenderloin	11.515497076	114
+Fire	February	Tenderloin	5.345833333	4
+Alarm	February	Tenderloin	5.993402778	48
+Potentially Life-Threatening	January	Tenderloin	7.826049869	254
+Non Life-threatening	January	Tenderloin	11.363623188	115
+Fire	January	Tenderloin	5.03	5
+Alarm	January	Tenderloin	5.566666667	39
+Potentially Life-Threatening	December	Western Addition	6.847435897	13
+Fire	December	Western Addition	4.6	1
+Potentially Life-Threatening	November	Western Addition	10.23	5
+Non Life-threatening	November	Western Addition	13.158333333	4
+Alarm	November	Western Addition	4	1
+Potentially Life-Threatening	October	Western Addition	7.946296296	9
+Non Life-threatening	October	Western Addition	8.944444444	3
+Potentially Life-Threatening	September	Western Addition	7.038888889	6
+Non Life-threatening	September	Western Addition	11.970833333	4
+Alarm	September	Western Addition	2.3	1
+Potentially Life-Threatening	August	Western Addition	9.044444444	3
+Non Life-threatening	August	Western Addition	9.427777778	3
+Alarm	August	Western Addition	4.808333333	2
+Potentially Life-Threatening	July	Western Addition	4.2	1
+Alarm	July	Western Addition	3.9	1
+Potentially Life-Threatening	June	Western Addition	7.958333333	4
+Non Life-threatening	June	Western Addition	5.066666667	3
+Potentially Life-Threatening	May	Western Addition	6.9	5
+Non Life-threatening	May	Western Addition	12.236666667	5
+Potentially Life-Threatening	April	Western Addition	6.005555556	3
+Non Life-threatening	April	Western Addition	10.55	2
+Alarm	April	Western Addition	7.416666667	1
+Potentially Life-Threatening	March	Western Addition	4.083333333	3
+Alarm	March	Western Addition		0
+Potentially Life-Threatening	February	Western Addition	5.797222222	6
+Non Life-threatening	February	Western Addition	12.7	1
+Alarm	February	Western Addition	5.422222222	3
+Potentially Life-Threatening	January	Western Addition	9.178571429	7
+Non Life-threatening	January	Western Addition	0	1
+Alarm	January	Western Addition	5.2	1
